@@ -1,0 +1,28 @@
+/* Font */
+@font-face {
+  font-family: cmu; /* set name */
+  src: url(../fonts/cmunrm.woff2);
+}
+
+@font-face {
+  font-family: cmu;
+  src: url(../fonts/cmunbx.woff2);
+  font-weight: bold;
+}
+
+/* Colour Palette */
+
+:root {
+    --primary-font: "cmu", cursive;
+    --secondary-font: "CMU Serif", cursive;
+    --white-color: #fffde5
+    --primary-color: #605f4f
+    --secondary-color: #adac9a
+    --highlight-color: #a3ccc4
+    --highlight-color-light: #dafffd
+}
+
+body{
+    font-family: var(--primary-font);
+    font-size: 1.2rem;
+}
