@@ -14,7 +14,7 @@
 
 :root {
     --primary-font: "cmu", cursive;
-    --secondary-font: "CMU Serif", cursive;
+    --secondary-font: "Hack Nerd Mono", Mono;
     --white-color: #fffde5;
     --primary-color: #605f4f;
     --secondary-color: #adac9a;
@@ -35,9 +35,19 @@ h3 {
 
 p {
     font: var(--primary-font);
+    color: var(--primary-color);
+}
+
+.subheading-color{
+    color: var(--primary-color);
 }
 
 /* Navbar */
+.logo{
+    max-width: 50px;
+    max-height: 50px;
+}
+
 #navbar {
     background-color: var(--primary-color);
 }
@@ -47,7 +57,11 @@ p {
 }
 
 #hero {
-    background-color: var(--highlight-color);
+    background-color: var(--secondary-color);
 }
 
 
+/* Footer */
+footer{
+    background-color: var(--primary-color);    
+}
