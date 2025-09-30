@@ -1,13 +1,13 @@
 /* Font */
 @font-face {
-  font-family: cmu; /* set name */
-  src: url(../fonts/cmunrm.woff2);
+    font-family: cmu; /* set name */
+    src: url(../fonts/cmunrm.woff2);
 }
 
 @font-face {
-  font-family: cmu;
-  src: url(../fonts/cmunbx.woff2);
-  font-weight: bold;
+    font-family: cmu;
+    src: url(../fonts/cmunbx.woff2);
+    font-weight: bold;
 }
 
 /* Colour Palette */
@@ -15,14 +15,39 @@
 :root {
     --primary-font: "cmu", cursive;
     --secondary-font: "CMU Serif", cursive;
-    --white-color: #fffde5
-    --primary-color: #605f4f
-    --secondary-color: #adac9a
-    --highlight-color: #a3ccc4
-    --highlight-color-light: #dafffd
+    --white-color: #fffde5;
+    --primary-color: #605f4f;
+    --secondary-color: #adac9a;
+    --highlight-color: #a3ccc4;
+    --highlight-color-light: #dafffd;
 }
 
-body{
+body {
     font-family: var(--primary-font);
     font-size: 1.2rem;
 }
+
+h1,
+h2,
+h3 {
+    font: var(--primary-font);
+}
+
+p {
+    font: var(--primary-font);
+}
+
+/* Navbar */
+#navbar {
+    background-color: var(--primary-color);
+}
+
+#navbar a {
+    color: var(--white-color);
+}
+
+#hero {
+    background-color: var(--highlight-color);
+}
+
+
