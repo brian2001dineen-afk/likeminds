@@ -43,7 +43,7 @@ p {
 }
 
 .subheading-color {
-    color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 /* Button styling */
