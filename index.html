@@ -1,189 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Likeminds - Home</title>
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-            crossorigin="anonymous"
-        />
-        <link rel="stylesheet" href="assets/css/style.css" />
-    </head>
 
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div id="navbar" class="container-fluid">
-                    <img class="logo" src="assets/images/logo.png" alt="">
-                    <a class="navbar-brand" href="index.html"
-                        >-- like-minds --</a
-                    >
-                    <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div
-                        class="collapse navbar-collapse"
-                        id="navbarSupportedContent"
-                    >
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link active"
-                                    aria-current="page"
-                                    href="#"
-                                    >Home</a
-                                >
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#about">About</a>
-                            </li>
-                            <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="index.html">home</a></li>
-                                <li><a class="dropdown-item" href="#">about</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul> 
-                        </li> -->
-                            <!-- <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li> -->
-                        </ul>
-                        <form class="d-flex" role="search">
-                            <input
-                                class="form-control me-2"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search"
-                            />
-                            <button
-                                class="btn btn-outline-success"
-                                type="submit"
-                            >
-                                Search
-                            </button>
-                        </form>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Likeminds - Home</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Personal Css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google Fonts (optional fallback if cmu isn't web-embedded yet) -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Macondo&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+     <!-- 
+    TODO: Make the navbar not push the content down when it expands.
+    TODO: Style the navbar buttons
+     -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="index.html">Likeminds</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="clubs.html">Clubs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="create.html">Create a Club</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="section hero text-center py-5 align-content-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Welcome to Likeminds.</h1>
+            <p class="lead">Create, join, and explore STEM-focused book clubs with ease.</p>
+            <a href="clubs.html" class="btn btn-dark btn-lg explore-btn">Explore Clubs</a>
+            <a href="clubs.html" class="btn btn-dark btn-lg explore-btn">Create A Club</a>
+        </div>
+
+    </header>
+
+    <!-- Features Section -->
+    <section class="section features py-5">
+        <div class="container text-center">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-box p-4 shadow rounded">
+                        <h3>Discover</h3>
+                        <p>Browse STEM clubs from physics to programming, tailored to your interests.</p>
                     </div>
                 </div>
-            </nav>
-        </header>
-
-        <main>
-            <section id="hero" class="container section">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h1 class="display-3 subheading-color">Text here</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Labore eligendi cum odio eum nobis quaerat
-                            ipsam laudantium magnam dolor culpa ea corporis,
-                            voluptatem in dicta rem fuga explicabo! A, deleniti.
-                        </p>
-                    </div>
-                    <div class="col-12">
-                        <p>Blank space</p>
+                <div class="col-md-4">
+                    <div class="feature-box p-4 shadow rounded">
+                        <h3>Connect</h3>
+                        <p>Meet like-minded learners, researchers, and enthusiasts worldwide.</p>
                     </div>
                 </div>
-            </section>
-
-<hr>
-
-            <div id="about" class="container section">
-                <div class="row center">
-                    <div class="col-6">
-                        <h2 class="display-6">About us</h2>
-                        <ul>
-                            <li>
-                                <strong>Search for groups</strong> – find a
-                                group looking for members. Sort by given topics
-                                on the site, or search by keyword or book name.
-                            </li>
-                            <li>
-                                <strong>Apply for a group</strong> – introduce
-                                yourself and convince the organizer why you
-                                would make a good fit for the team.
-                            </li>
-                            <li>
-                                <strong>Propose a group</strong> – create a
-                                group page advertising your chosen material,
-                                schedule, and meeting frequency. The page may
-                                also contain a description outlining more
-                                specific details as to the group's proposed
-                                facilitation.
-                            </li>
-                            <li>
-                                <strong>Manage your group</strong> – assign
-                                roles to members and oversee your team's
-                                progress. Easily check what you need to
-                                prioritize and where people might be falling
-                                behind.
-                            </li>
-                        </ul>
+                <div class="col-md-4">
+                    <div class="feature-box p-4 shadow rounded">
+                        <h3>Organize</h3>
+                        <p>Set schedules, track readings, and keep discussions structured and fun.</p>
                     </div>
-                    <h3 class="display-6">Decide your workmode</h3>
-                    <ol>
-                        <li>
-                            <strong>Open choice</strong> – material is switched
-                            out as the group completes it. There is no one
-                            subject of study.
-                            <ul>
-                                <li>
-                                    This is useful for more casual groups, who
-                                    want to learn many different things in a
-                                    relaxed setting.
-                                </li>
-                                <li>
-                                    Can be difficult to constantly curate
-                                    interesting topics at a fixed pace.
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <strong>Commitment</strong> – a singular book or
-                            source of reference is chosen. Any extra material
-                            should correlate to the given topic in some way.
-                        </li>
-                    </ol>
                 </div>
             </div>
-            
-<hr>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section cta text-center py-5">
+        <div class="container">
+            <h2 class="fw-bold mb-3">Start Your STEM Journey</h2>
+            <p class="lead">Be part of a growing community of curious readers and thinkers.</p>
+            <a href="create.html" class="btn btn-lg create-btn">Create a Club</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-3 text-center">
+        <p class="mb-0">© 2025 Likeminds | Built for curious minds</p>
+    </footer>
+</body>
 
 
+<!-- Bootstrap Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
 
-        </main>
-
-        <!-- Footer -->
-        <footer id="footer">
-            <div class="container-fluid">
-                <div class="col text-center">
-                    <p>All rights reserved</p>
-                </div>
-            </div>
-        </footer>
-
-        <!-- Bootstrap Script -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"
-        ></script>
-    </body>
 </html>

@@ -11,57 +11,98 @@
 }
 
 /* Colour Palette */
-
 :root {
-    --primary-font: "cmu", cursive;
-    --secondary-font: "Hack Nerd Mono", Mono;
-    --white-color: #fffde5;
-    --primary-color: #605f4f;
-    --secondary-color: #adac9a;
-    --highlight-color: #a3ccc4;
+    --heading-font: "cmu", cursive;
+    --primary-font: "Inter", cursive;
+    --white-color: #fffef6;
+    --primary-color: #2b2724;
+    --secondary-color: #37353b;
+    --highlight-color: #a0c9c0;
     --highlight-color-light: #dafffd;
 }
 
-body {
-    font-family: var(--primary-font);
+header p {
     font-size: 1.2rem;
+}
+
+body {
+    font-family: var(--primary-font), "Fira Sans", sans-serif;
+    background-color: var(--white-color);
+    margin: 0;
+    padding: 0;
 }
 
 h1,
 h2,
 h3 {
-    font: var(--primary-font);
+    font-family: var(--heading-font);
 }
 
 p {
     font: var(--primary-font);
+}
+
+.subheading-color {
     color: var(--primary-color);
 }
 
-.subheading-color{
-    color: var(--primary-color);
+/* Button styling */
+
+.btn {
+    border-radius: 1rem;
+    transition: transform 0.2s ease;
+    color: var(--highlight-color);
+    border: #a0c9c0;
 }
 
 /* Navbar */
-.logo{
+.logo {
     max-width: 50px;
     max-height: 50px;
 }
 
-#navbar {
-    background-color: var(--primary-color);
+.navbar {
+    background: var(--primary-color);
 }
 
-#navbar a {
+.navbar a {
     color: var(--white-color);
-<a class="navbar-brand" href="{% url 'as' %}">Logo</a>}
-
-#hero {
-    background-color: var(--secondary-color);
 }
 
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Hero section */
+
+.hero {
+    background: linear-gradient(
+        to bottom,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+    color: var(--white-color);
+    min-height: 80vh;
+}
+
+/* Frosted glass button effect */
+.explore-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white-color);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.explore-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white-color);
+}
 
 /* Footer */
-footer{
-    background-color: var(--primary-color);    
+footer {
+    background-color: var(--primary-color);
+    color: var(--highlight-color);
 }
