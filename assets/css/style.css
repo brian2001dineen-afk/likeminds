@@ -1,4 +1,5 @@
 /* Font */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 @font-face {
     font-family: cmu; /* set name */
     src: url(../fonts/cmunrm.woff2);
@@ -12,8 +13,8 @@
 
 /* Colour Palette */
 :root {
-    --heading-font: "cmu", cursive;
-    --primary-font: "Inter", cursive;
+    --heading-font: "cmu", sans-serif;
+    --primary-font: "Source Sans 3", Sans;
     --white-color: #fffef6;
     --primary-color: #2b2724;
     --secondary-color: #37353b;
@@ -27,7 +28,7 @@ header p {
 
 body {
     font-family: var(--primary-font), "Fira Sans", sans-serif;
-    background-color: var(--white-color);
+    background-color: white;
     margin: 0;
     padding: 0;
 }
@@ -42,6 +43,10 @@ p {
     font: var(--primary-font);
 }
 
+a {
+    color: teal;
+}
+
 .subheading-color {
     color: var(--secondary-color);
 }
@@ -53,6 +58,29 @@ p {
     transition: transform 0.2s ease;
     color: var(--highlight-color);
     border: #a0c9c0;
+}
+
+.frost-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white-color);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.frost-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white-color);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--highlight-color-light);
+}
+
+.accordion-button {
+    background-color: var(--white-color);
 }
 
 /* Navbar */
@@ -85,28 +113,30 @@ p {
     min-height: 80vh;
 }
 
-/* Frosted glass button effect */
-.explore-btn {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--white-color);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+/* Features Section */
+#features{
+    
 }
 
-.explore-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+/* CTA Section */
+#cta {
+    border: 5px solid var(--primary-color);
+    border-left: 0px;
+    border-right: 0px;
+    background-color: var(--secondary-color);
     color: var(--white-color);
 }
 
 /* FAQ Section */
 
-.accordian-header {
-    font: var(--primary-font);
+#faq h3 {
+    font-family: var(--primary-font);
+    color: var(--primary-color);
 }
 
+#faq .accordion-body {
+    background-color: var(--white-color);
+}
 
 /* Footer */
 footer {
