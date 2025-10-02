@@ -54,7 +54,7 @@ p {
 
 #navbar a {
     color: var(--white-color);
-}
+<a class="navbar-brand" href="{% url 'as' %}">Logo</a>}
 
 #hero {
     background-color: var(--secondary-color);
