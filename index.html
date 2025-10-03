@@ -40,7 +40,7 @@
                     <li class="nav-item"><a class="nav-link" href="clubs.html">Clubs</a></li>
                     <li class="nav-item"><a class="nav-link" href="create.html">Create a Club</a></li>
                     <li class="nav-item"><a class="nav-link" href="signup.html">Sign up</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -63,47 +63,120 @@
         </div>
 
         <!-- Wavy background -->
-         <!-- TODO:FIX -->
+        <!-- TODO:FIX -->
 
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" fill="none"
-                class="bottom-0 start-0 position-absolute">
-                <g stroke="#2b2724" stroke-width="1" fill="none">
-                    <path d="M0 150 Q150 100 300 150 T600 150 T900 120 T1200 150" />
-                    <path d="M0 160 Q150 110 300 160 T600 160 T900 130 T1200 160" />
-                    <path d="M0 170 Q150 120 300 170 T600 170 T900 140 T1200 170" />
-                    <path d="M0 180 Q150 130 300 180 T600 180 T900 150 T1200 180" />
-                    <path d="M0 190 Q150 140 300 190 T600 190 T900 160 T1200 190" />
-                    <path d="M0 200 Q150 150 300 200 T600 200 T900 170 T1200 200" />
-                    <path d="M0 210 Q150 160 300 210 T600 210 T900 180 T1200 210" />
-                    <path d="M0 220 Q150 170 300 220 T600 220 T900 190 T1200 220" />
-                    <path d="M0 230 Q150 180 300 230 T600 230 T900 200 T1200 230" />
-                    <path d="M0 240 Q150 190 300 240 T600 240 T900 210 T1200 240" />
-                </g>
-            </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" fill="none"
+            class="bottom-0 start-0 position-absolute">
+            <g stroke="#2b2724" stroke-width="1" fill="none">
+                <path d="M0 150 Q150 100 300 150 T600 150 T900 120 T1200 150" />
+                <path d="M0 160 Q150 110 300 160 T600 160 T900 130 T1200 160" />
+                <path d="M0 170 Q150 120 300 170 T600 170 T900 140 T1200 170" />
+                <path d="M0 180 Q150 130 300 180 T600 180 T900 150 T1200 180" />
+                <path d="M0 190 Q150 140 300 190 T600 190 T900 160 T1200 190" />
+                <path d="M0 200 Q150 150 300 200 T600 200 T900 170 T1200 200" />
+                <path d="M0 210 Q150 160 300 210 T600 210 T900 180 T1200 210" />
+                <path d="M0 220 Q150 170 300 220 T600 220 T900 190 T1200 220" />
+                <path d="M0 230 Q150 180 300 230 T600 230 T900 200 T1200 230" />
+                <path d="M0 240 Q150 190 300 240 T600 240 T900 210 T1200 240" />
+            </g>
+        </svg>
 
         </div>
     </header>
-
+<main>
     <!-- Features Section -->
     <section id="features" class="section py-5">
-        <div class="container text-center">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5">
+                <h2 class="fw-bold subheading-color">Why Choose Likeminds?</h2>
+                <p class="lead text-muted">Everything you need to build meaningful STEM connections.</p>
+            </div>
+
+            <!-- Features Grid -->
             <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="feature-box p-4 shadow rounded">
-                        <h3>Discover</h3>
-                        <p>Browse STEM clubs from physics to programming, tailored to your interests.</p>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-search fa-3x"></i>
+                            </div>
+                            <h3 class="card-title h4 fw-bold mb-3">Discover</h3>
+                            <p class="card-text text-muted">Browse STEM clubs from physics to programming, tailored to
+                                your interests and academic level.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="feature-box p-4 shadow rounded">
-                        <h3>Connect</h3>
-                        <p>Meet like-minded learners, researchers, and enthusiasts worldwide.</p>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-users fa-3x"></i>
+                            </div>
+                            <h3 class="card-title h4 fw-bold mb-3">Connect</h3>
+                            <p class="card-text text-muted">Meet like-minded learners, researchers, and enthusiasts from
+                                around the world.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="feature-box p-4 shadow rounded">
-                        <h3>Organize</h3>
-                        <p>Set schedules, track readings, and keep discussions structured and fun.</p>
+
+                <div class="col-lg-4 col-md-12">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-calendar-alt fa-3x"></i>
+                            </div>
+                            <h3 class="card-title h4 fw-bold mb-3">Organize</h3>
+                            <p class="card-text text-muted">Set schedules, track readings, and keep discussions
+                                structured and engaging.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="section about py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold subheading-color">About Us</h2>
+                    </div>
+
+                    <div class="about-content">
+                        <p class="mb-4">
+                            Likeminds was founded to serve one primary purpose: to reduce the feeling of social
+                            isolation amongst the STEM community, and to promote commitment to learning. We know what
+                            it's like to have to read a dense PDF alone, with little or no outside input or
+                            collaboration. We also know there's a major portion of the STEM community who are
+                            neurodiverse, and may find it difficult to go it alone. To us, you don't have to be.
+                        </p>
+
+                        <p class="mb-4">
+                            Studies show that learning within a small group results in an enhanced sense of community,
+                            increased skill acquisition, and better learning outcomes.<sup><a
+                                    href="https://www.erudit.org/en/journals/irrodl/2009-v10-n3-irrodl05155/1067868ar/abstract/"
+                                    target="_blank" rel="noopener" class="text-decoration-none">1</a></sup> While that's
+                            great and all, the problem at hand is usually forming such a group in the first place.
+                            That's where we come in. Our goal is to make the process of creating and contributing these
+                            groups is as easy as possible, while helping to create a greater sense of community overall
+                            through our <a href="events.html">Events</a>.
+                        </p>
+
+                        <p class="mb-4">
+                            If you're still not sure what we're about, your answer might be found in our <a
+                                href="#faq">FAQ</a>. However, feel free to <a
+                                href="mailto:brian2001dineen@gmail.com?subject=Likeminds%20-%20User%20Question&body=**Note**%3A%20make%20sure%20your%20question%20hasn't%20already%20been%20answered%20on%20our%20FAQ%20page!!!%20Emails%20regarding%20answered%20queries%20may%20be%20ignored.%0A%0A"
+                                class="text-decoration-none">email us</a> otherwise if you have a more specific query!
+                        </p>
+
+                        <div class="text-center mt-5">
+                            <a href="#contact" class="btn frost-btn-dark btn-lg me-3">Get In Touch</a>
+                            <a href="#faq" class="btn frost-btn-dark btn-lg">Learn More</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -119,7 +192,7 @@
                 <h2 class="fw-bold my-3">Start Your STEM Journey</h2>
             </span>
             <p class="lead">Be part of a growing community of curious readers and thinkers.</p>
-            <a href="create.html" class="btn btn-lg frost-btn">Sign Up</a>
+            <a href="create.html" class="btn btn-lg frost-btn">Sign Up!</a>
         </div>
     </section>
 
@@ -278,7 +351,7 @@
             </div>
         </div>
     </div>
-
+</main>
 
     <!-- Footer -->
     <footer class="footer py-5">
@@ -314,41 +387,54 @@
 
                 <!-- Quick Links Section -->
                 <div class="col-md-4">
-                    <h5 class="mb-3">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="error.html" class="text-decoration-none">Privacy Policy</a>
-                        </li>
-                        <li class="mb-2"><a href="error.html" class="text-decoration-none">Terms &
-                                Conditions</a></li>
-                        <li class="mb-2"><a href="error.html" class="text-decoration-none">Cookie Policy</a>
-                        </li>
-                        <li class="mb-2"><a href="error.html" class="text-decoration-none">Community
-                                Guidelines</a></li>
-                        <li class="mb-2"><a href="error.html" class="text-decoration-none">Help & Support</a>
-                        </li>
-                        <li class="mb-2"><a href="error.html" class="text-decoration-none">Accessibility</a>
-                        </li>
-                    </ul>
+                    <h5 class="mb-3 d-none d-md-block">Quick Links</h5>
+
+                    <div class="row row-cols-2 row-cols-md-1 g-2">
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Privacy Policy</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Terms & Conditions</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Cookie Policy</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Community Guidelines</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Help & Support</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Accessibility</a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Contact Section -->
                 <section id="contact" class="col-md-4">
                     <h5 class="mb-3">Contact Us</h5>
                     <div class="contact-info">
-                        <div class="mb-3">
-                            <strong>Address:</strong><br>
-                            Crossmahon<br>
-                            Bandon<br>
-                            Co. Cork<br>
-                        </div>
-                        <div class="mb-3">
-                            <strong>Phone:</strong><br>
-                            <a href="tel:+353 023 456 7890" class="text-decoration-none">+353 023 456 7890</a>
-                        </div>
-                        <div class="mb-3">
-                            <strong>Email:</strong><br>
-                            <a href="mailto:brian2001dineen@gmail.com"
-                                class="text-decoration-none">brian2001dineen@gmail.com</a>
+                        <div class="row g-3">
+                            <div class="col-sm-6 col-md-12">
+                                <div class="mb-3">
+                                    <strong>Address:</strong><br>
+                                    Crossmahon<br>
+                                    Bandon<br>
+                                    Co. Cork<br>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                <div class="mb-3">
+                                    <strong>Phone:</strong><br>
+                                    <a href="tel:+353 023 456 7890" class="text-decoration-none">+353 023 456 7890</a>
+                                </div>
+                                <div class="mb-3">
+                                    <strong>Email:</strong><br>
+                                    <a href="mailto:brian2001dineen@gmail.com"
+                                        class="text-decoration-none">brian2001dineen@gmail.com</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

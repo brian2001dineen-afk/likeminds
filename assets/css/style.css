@@ -20,9 +20,6 @@
     --secondary-color: #37353b;
     --highlight-color: #a0c9c0;
     --highlight-color-light: #dafffd;
-}
-
-header p {
     font-size: 1.2rem;
 }
 
@@ -88,6 +85,7 @@ a {
     transition: transform 0.2s ease;
     color: var(--highlight-color);
     border: #a0c9c0;
+    text-transform: lowercase;
 }
 
 .frost-btn {
@@ -144,13 +142,6 @@ a {
     transition: color 0.3s ease;
 }
 
-/* Make it sticky */
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-}
-
 /* Hero section */
 
 #hero {
@@ -201,6 +192,11 @@ a {
     background: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.6);
     color: var(--highlight-color-light);
+}
+
+/* Features Section */
+.feature-icon i {
+    color: var(--highlight-color);
 }
 
 /* Footer */
