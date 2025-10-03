@@ -35,7 +35,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
     font-family: var(--heading-font);
 }
 
@@ -45,6 +46,35 @@ p {
 
 a {
     color: teal;
+}
+
+/* Heading styling */
+/* Media query: only activate for >= md screens (768px+) */
+@media (min-width: 768px) {
+    h1 {
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    h1:before,
+    h1:after {
+        flex-grow: 1;
+        height: 1px;
+        content: "\a0";
+        background-color: var(--white-color);
+        position: relative;
+        top: 0.55em;
+    }
+
+    h1:before {
+        margin-right: 10px;
+    }
+
+    h1:after {
+        margin-left: 10px;
+    }
 }
 
 .subheading-color {
@@ -65,14 +95,14 @@ a {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--white-color);
+    color: var(--highlight-color);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .frost-btn:hover {
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    color: var(--white-color);
+    color: var(--highlight-color-light);
 }
 
 .accordion-button:not(.collapsed) {
@@ -91,6 +121,7 @@ a {
 
 .navbar {
     background: var(--primary-color);
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 .navbar a {
@@ -99,6 +130,25 @@ a {
 
 .btn:hover {
     transform: scale(1.05);
+}
+
+/* Add active state */
+.navbar .nav-link.active {
+    color: var(--highlight-color) !important;
+    font-weight: 600;
+}
+
+/* Enhance hover effects */
+.navbar .nav-link:hover {
+    color: var(--highlight-color-light) !important;
+    transition: color 0.3s ease;
+}
+
+/* Make it sticky */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
 }
 
 /* Hero section */
@@ -110,17 +160,17 @@ a {
         var(--secondary-color)
     );
     color: var(--white-color);
-    min-height: 80vh;
+    min-height: 85vh;
+    border-bottom: 3px solid var(--primary-color);
 }
 
 /* Features Section */
-#features{
-    
+#features {
 }
 
 /* CTA Section */
 #cta {
-    border: 5px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
     border-left: 0px;
     border-right: 0px;
     background-color: var(--secondary-color);
@@ -138,8 +188,27 @@ a {
     background-color: var(--white-color);
 }
 
+.frost-btn-dark {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    color: var(--white-color);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.frost-btn-dark:hover {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    color: var(--highlight-color-light);
+}
+
 /* Footer */
 footer {
     background-color: var(--primary-color);
-    color: var(--highlight-color);
+    color: var(--white-color);
+}
+
+footer a {
+    color: #a0c9c0;
 }
