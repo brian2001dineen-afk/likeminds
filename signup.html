@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Likeminds - Sign Up</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Personal Css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google Fonts (optional fallback if cmu isn't web-embedded yet) -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Macondo&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="index.html">Likeminds</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="clubs.html">Clubs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="create.html">Create a Club</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="signup.html">Sign up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="error.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container vh-100 d-flex flex-column justify-content-center align-items-center text-center">
+            <div class="row justify-content-center w-100">
+                <div class="col-lg-6 col-md-8">
+                    <h1 class="fw-bold mt-4">Be the first to know.</h1>
+                    <p class="lead mb-4">
+                        We're launching soon! Sign up now to receive exclusive updates and be the first to join our
+                        community of STEM enthusiasts.
+                    </p>
+
+                    <!-- Email Signup Form -->
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-4">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="signupEmail" class="form-label fw-bold text-start d-block">Email
+                                        Address <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        <input type="email" class="form-control" id="signupEmail"
+                                            placeholder="Enter your email address" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="signupName" class="form-label fw-bold text-start d-block">Name
+                                        (Optional)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        <input type="text" class="form-control" id="signupName" placeholder="Your name">
+                                    </div>
+                                </div>
+
+                                <!-- Interest Checkboxes -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold text-start d-block mb-3">Areas of Interest
+                                        (Optional)</label>
+                                    <div class="row g-2">
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="physics">
+                                                <label class="form-check-label small" for="physics">Physics</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="mathematics">
+                                                <label class="form-check-label small"
+                                                    for="mathematics">Mathematics</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="programming">
+                                                <label class="form-check-label small"
+                                                    for="programming">Programming</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="engineering">
+                                                <label class="form-check-label small"
+                                                    for="engineering">Engineering</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="biology">
+                                                <label class="form-check-label small" for="biology">Biology</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="chemistry">
+                                                <label class="form-check-label small" for="chemistry">Chemistry</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Agreement Checkboxes -->
+                                <div class="mb-4 text-start">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="agreeUpdates" required>
+                                        <label class="form-check-label small" for="agreeUpdates">
+                                            I agree to receive launch updates and newsletters
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="agreePrivacy" required>
+                                        <label class="form-check-label small" for="agreePrivacy">
+                                            I agree to the <a href="error.html" class="text-decoration-none">Privacy
+                                                Policy</a> and <a href="error.html" class="text-decoration-none">Terms
+                                                of Service</a>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Buttons -->
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-lg frost-btn-dark">
+                                        <i class="fas fa-bell me-2"></i>Notify Me at Launch
+                                    </button>
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#newsletterModal">
+                                        <i class="fas fa-envelope me-2"></i>Just Newsletter
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div class="mt-4">
+                        <p class="text-muted small">
+                            <i class="fas fa-shield-alt me-1"></i>
+                            We respect your privacy. No spam, unsubscribe at any time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Newsletter Modal -->
+    <div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="newsletterModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newsletterModalLabel">
+                        <i class="fas fa-envelope me-2"></i>Subscribe to Our Newsletter
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-3">Stay updated with the sites development! We promise not to spam you :)</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="newsletterEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="newsletterEmail" placeholder="Enter your email"
+                                required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                I agree to receive newsletters and updates from Likeminds
+                            </label>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn frost-btn-dark">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Mini About Section -->
+                <div class="col-md-4">
+                    <h5 class="mb-3">Likeminds</h5>
+                    <p class="mb-3">A platform connecting STEM enthusiasts through book clubs and study groups. Join our
+                        community of curious minds exploring science, technology, engineering, and mathematics together.
+                    </p>
+
+                    <!-- Newsletter Signup -->
+                    <div class="newsletter-signup mb-3">
+                        <h6 class="mb-2">Stay Updated</h6>
+                        <button type="button" class="btn btn-sm frost-btn-dark" data-bs-toggle="modal"
+                            data-bs-target="#newsletterModal">
+                            <i class="fas fa-envelope me-1"></i>Subscribe to the Development Newsletter
+                        </button>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener" class="text-decoration-none"
+                            aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.twitter.com" target="_blank" rel="noopener" class="text-decoration-none"
+                            aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/brian-dineen-62641529a" target="_blank" rel="noopener"
+                            class="text-decoration-none" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/brian2001dineen-afk/likeminds" target="_blank" rel="noopener"
+                            class="text-decoration-none" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="col-md-4">
+                    <h5 class="mb-3 d-none d-md-block">Quick Links</h5>
+
+                    <div class="row row-cols-2 row-cols-md-1 g-2">
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Privacy Policy</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Terms & Conditions</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Cookie Policy</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Community Guidelines</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Help & Support</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Accessibility</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <section id="contact" class="col-md-4">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <div class="contact-info">
+                        <div class="row g-3">
+                            <div class="col-sm-6 col-md-12">
+                                <div class="mb-3">
+                                    <strong>Address:</strong><br>
+                                    Crossmahon<br>
+                                    Bandon<br>
+                                    Co. Cork<br>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                <div class="mb-3">
+                                    <strong>Phone:</strong><br>
+                                    <a href="tel:+353 023 456 7890" class="text-decoration-none">+353 023 456 7890</a>
+                                </div>
+                                <div class="mb-3">
+                                    <strong>Email:</strong><br>
+                                    <a href="mailto:brian2001dineen@gmail.com"
+                                        class="text-decoration-none">brian2001dineen@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Copyright Section -->
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">© 2025 Likeminds.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button onclick="scrollToTop()" class="btn btn-sm frost-btn-dark" aria-label="Back to top">
+                        <i class="fas fa-arrow-up me-1"></i>Back to Top
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!-- JavaScript -->
+    <script>
+        // Back to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>
