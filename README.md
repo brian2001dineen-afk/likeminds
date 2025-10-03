@@ -10,7 +10,7 @@ Likeminds is a platform for learners, educators, and enthusiasts to form book cl
 The goal is to make learning collaborative and engaging by combining structured reading with interactive events like puzzles, challenges, and community spotlights.
 
 ---
-
+`
 ## User Experience (UX)
 
 ### User Stories
