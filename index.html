@@ -51,7 +51,7 @@
 
     <!-- Hero Section -->
     <header id="hero" class="section hero text-center py-5 align-content-center position-relative">
-        <div class="container">
+        <div class="container position-relative" style="z-index: 10;">
             <div class="col-12">
                 <h1 class="display-4 fw-bold">Welcome to Likeminds.</h1>
                 <p class="lead">Create, join, and explore STEM-focused book clubs with ease.</p>
@@ -66,7 +66,7 @@
         <!-- TODO:FIX -->
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" fill="none"
-            class="bottom-0 start-0 position-absolute">
+            class="bottom-0 start-0 position-absolute" style="z-index: 1; pointer-events: none;">
             <g stroke="#2b2724" stroke-width="1" fill="none">
                 <path d="M0 150 Q150 100 300 150 T600 150 T900 120 T1200 150" />
                 <path d="M0 160 Q150 110 300 160 T600 160 T900 130 T1200 160" />
@@ -313,8 +313,8 @@
                                         How do I ensure the group stays active?
                                     </button>
                                 </h3>
-                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="collapseFour"
-                                    data-bs-parent="#faqAccordion">
+                                <div id="collapseFour" class="accordion-collapse collapse"
+                                    aria-labelledby="collapseFour" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
                                         <p>This is a hard question to answer, and will vary depending on the people
                                             you're
