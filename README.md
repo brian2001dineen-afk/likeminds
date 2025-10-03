@@ -2,15 +2,13 @@
 
 > A website dedicated to creating and organizing STEM-focused book clubs, designed to promote collaborative learning, discussion, and knowledge sharing.
 
----
+You can access the site [here](https://brian2001dineen-afk.github.io/likeminds/)
 
 ## Project Overview
 
 Likeminds is a platform for learners, educators, and enthusiasts to form book clubs around STEM subjects.  
 The goal is to make learning collaborative and engaging by combining structured reading with interactive events like puzzles, challenges, and community spotlights.
 
----
-`
 ## User Experience (UX)
 
 ### User Stories
@@ -148,17 +146,10 @@ Introduces Likeminds, its purpose, and highlights the platform's mission of conn
 
 **Browser Testing**
 
--   **Firefox**: Full functionality verified across all features
--   **Helium**: Complete testing suite passed
--   **Chrome**: Layout and interactive elements working correctly
--   **Safari**: Responsive design and form functionality confirmed
-
-**Accessibility Testing**
-
--   **Screen Reader**: Semantic HTML structure supports assistive technologies
--   **Keyboard Navigation**: All interactive elements accessible via keyboard
--   **Color Contrast**: Text/background combinations meet WCAG guidelines
--   **Focus Indicators**: Clear visual focus states for form elements and links
+-   **Firefox**: Full functionality
+-   **Helium**: Works as expected, but may have unknown bugs as the browser is quite new
+-   **Chrome**: Unsure, but since Helium is Chromium-based and in Alpha, it should also work
+-   **Safari**: Unsure, but let me know!
 
 **Validators**
 
@@ -172,7 +163,7 @@ Introduces Likeminds, its purpose, and highlights the platform's mission of conn
 
 -   **Hero Section**: Hero text on the landing page can change length dramatically at specific Bootstrap breakpoints (particularly around 768px and 992px), causing layout shifts
 -   **Footer Layout**: Footer components may organize erratically on very small screen sizes (below 320px), with social links and contact information potentially overlapping
--   **Form Validation**: Club creation form may not properly highlight all required fields on first submission attempt
+-   **Form Validation**: Club creation form uses default Bootstrap styling instead of site pallete
 -   **Pagination**: Custom pagination styling may not override Bootstrap defaults in all browser configurations
 
 ## Future Enhancements
