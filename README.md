@@ -1,8 +1,31 @@
+![](https://i.imgur.com/jMEypHm.png)
+
 # Likeminds
 
 > A website dedicated to creating and organizing STEM-focused book clubs, designed to promote collaborative learning, discussion, and knowledge sharing.
 
 You can access the site [here](https://brian2001dineen-afk.github.io/likeminds/)
+
+## Table of Contents
+
+-   [Project Overview](#project-overview)
+-   [User Experience (UX)](#user-experience-ux)
+    -   [User Stories](#user-stories)
+        -   [Must-Have Features (Implemented)](#must-have-features-implemented)
+        -   [Could-Have Features (Backlog)](#could-have-features-backlog)
+-   [Early Wireframes](#early-wireframes)
+-   [Features](#features)
+    -   [Landing page](#landing-page)
+    -   [Book Clubs](#book-clubs)
+    -   [Newsletter System](#newsletter-system)
+    -   [Navigation & User Experience](#navigation--user-experience)
+    -   [Design Philosophy](#design-philosophy)
+    -   [Accessibility Features](#accessibility-features)
+-   [Testing](#testing)
+-   [Known Bugs](#known-bugs)
+-   [Future Enhancements](#future-enhancements)
+-   [Technologies Used](#technologies-used)
+-   [Deployment](#deployment)
 
 ## Project Overview
 
@@ -79,12 +102,12 @@ The goal is to make learning collaborative and engaging by combining structured 
 
 As the project was coded and developed, the actual site changed a lot compared to the wireframe sketches, especially on the landing page.
 
-- Mobile view
-![](https://i.imgur.com/NytSaVb.png)
+-   Mobile view
+    ![](https://i.imgur.com/NytSaVb.png)
 
 ![](https://i.imgur.com/l0j4UlZ.png)
 
-- Desktop view
+-   Desktop view
 
 ![](https://i.imgur.com/y3GGAlX.png)
 
@@ -165,7 +188,7 @@ Introduces Likeminds, its purpose, and highlights the platform's mission of conn
 -   **W3C HTML**: No issues
 -   **W3C CSS**: Validation pending - custom stylesheet and Bootstrap overrides to be verified
 -   **WCAG Accessibility**: 87%
-- **Lighthouse report**: ![](https://i.imgur.com/9U4hRoF.png)
+-   **Lighthouse report**: ![](https://i.imgur.com/9U4hRoF.png)
 
 ---
 
@@ -178,8 +201,8 @@ Introduces Likeminds, its purpose, and highlights the platform's mission of conn
 
 ## Future Enhancements
 
-- **Site load**: Optimize font loading and external platform requests for better performance and load times
-- **Accessibility**: Increase aria labelling of site content for those who are visually impaired
+-   **Site load**: Optimize font loading and external platform requests for better performance and load times
+-   **Accessibility**: Increase aria labelling of site content for those who are visually impaired
 -   **User Authentication**: Full user registration and login system for personalized club management
 -   **Calendar Integration**: Sync club meeting schedules with popular calendar applications
 -   **Progress Tracking**: Reading progress indicators and milestone achievements
