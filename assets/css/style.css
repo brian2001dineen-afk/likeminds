@@ -208,3 +208,53 @@ footer {
 footer a {
     color: #a0c9c0;
 }
+
+/* Pagination */
+.pagination .page-link {
+    color: var(--highlight-color);
+    border-color: var(--highlight-color);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--highlight-color);
+    border-color: var(--highlight-color);
+    color: white;
+}
+
+.pagination .page-link:hover {
+    background-color: var(--highlight-color-light);
+    border-color: var(--highlight-color);
+    color: var(--primary-color);
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    border-color: #dee2e6;
+}
+
+/* Search and Filter Section */
+.form-control:focus {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 0 0.2rem rgba(160, 201, 192, 0.25);
+}
+
+.form-select:focus {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 0 0.2rem rgba(160, 201, 192, 0.25);
+}
+
+.input-group-text {
+    background-color: var(--highlight-color-light);
+    border-color: var(--highlight-color);
+    color: var(--primary-color);
+}
+
+/* Club Cards */
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body .btn {
+    margin-top: auto;
+}

@@ -77,6 +77,10 @@ The goal is to make learning collaborative and engaging by combining structured 
 
 ---
 
+## Early Wireframes
+![](https://i.imgur.com/NytSaVb.png)
+![](https://i.imgur.com/y3GGAlX.png)
+
 ## Features
 
 ### Landing page
