@@ -78,8 +78,12 @@ The goal is to make learning collaborative and engaging by combining structured 
 ---
 
 ## Early Wireframes
+
+As the project was coded and developed, the actual site changed a lot compared to the wireframe sketches, especially on the landing page.
 ![](https://i.imgur.com/NytSaVb.png)
 ![](https://i.imgur.com/y3GGAlX.png)
+
+Some choices were kept like the expanding line along the hero title, however this was too buggy on mobile, and so was only kept for larger screens.
 
 ## Features
 
