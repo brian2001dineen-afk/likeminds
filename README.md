@@ -78,8 +78,17 @@ The goal is to make learning collaborative and engaging by combining structured 
 ## Early Wireframes
 
 As the project was coded and developed, the actual site changed a lot compared to the wireframe sketches, especially on the landing page.
+
+- Mobile view
 ![](https://i.imgur.com/NytSaVb.png)
+
+![](https://i.imgur.com/l0j4UlZ.png)
+
+- Desktop view
+
 ![](https://i.imgur.com/y3GGAlX.png)
+
+![](https://i.imgur.com/fXcdKVz.png)
 
 Some choices were kept like the expanding line along the hero title, however this was too buggy on mobile, and so was only kept for larger screens.
 
@@ -153,9 +162,10 @@ Introduces Likeminds, its purpose, and highlights the platform's mission of conn
 
 **Validators**
 
--   **W3C HTML**: Validation pending - all pages to be tested for semantic correctness
+-   **W3C HTML**: No issues
 -   **W3C CSS**: Validation pending - custom stylesheet and Bootstrap overrides to be verified
--   **WCAG Accessibility**: Compliance testing pending - full accessibility audit planned
+-   **WCAG Accessibility**: 87%
+- **Lighthouse report**: ![](https://i.imgur.com/9U4hRoF.png)
 
 ---
 
@@ -168,6 +178,8 @@ Introduces Likeminds, its purpose, and highlights the platform's mission of conn
 
 ## Future Enhancements
 
+- **Site load**: Optimize font loading and external platform requests for better performance and load times
+- **Accessibility**: Increase aria labelling of site content for those who are visually impaired
 -   **User Authentication**: Full user registration and login system for personalized club management
 -   **Calendar Integration**: Sync club meeting schedules with popular calendar applications
 -   **Progress Tracking**: Reading progress indicators and milestone achievements
