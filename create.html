@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Likeminds - Create a Club</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Personal Css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google Fonts (optional fallback if cmu isn't web-embedded yet) -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Macondo&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="index.html">Likeminds</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="clubs.html">Clubs</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="create.html">Create a Club</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signup.html">Sign up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="section py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold subheading-color">Create Your STEM Club</h1>
+                    <p class="lead text-muted">Start a book club and connect with like-minded STEM enthusiasts
+                        worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Guidelines Section -->
+    <section class="section py-4 border-bottom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="alert alert-info border-0">
+                        <h5 class="alert-heading"><i class="fas fa-lightbulb me-2"></i>Club Creation Guidelines</h5>
+                        <p class="mb-2">To maximize your chances of finding engaged members, please follow these best
+                            practices:</p>
+                        <ul class="mb-0">
+                            <li>Choose a well-known textbook or resource in your field</li>
+                            <li>Set a realistic reading pace and meeting schedule</li>
+                            <li>Provide clear expectations for participation</li>
+                            <li>Consider the target audience and difficulty level</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Club Creation Form -->
+    <section class="section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form>
+                        <!-- Basic Information -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body p-4">
+                                <h4 class="card-title mb-4"><i class="fas fa-info-circle me-2 text-primary"></i>Basic
+                                    Information</h4>
+
+                                <div class="mb-3">
+                                    <label for="clubName" class="form-label fw-bold">Club Name <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="clubName"
+                                        placeholder="e.g., Quantum Mechanics Study Group" required>
+                                    <div class="form-text">Choose a descriptive name that includes the subject and type
+                                        of study.</div>
+                                </div>
+
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="subject" class="form-label fw-bold">Subject <span
+                                                class="text-danger">*</span></label>
+                                        <select class="form-select" id="subject" required>
+                                            <option value="">Select a subject...</option>
+                                            <option value="physics">Physics</option>
+                                            <option value="mathematics">Mathematics</option>
+                                            <option value="programming">Programming & Computer Science</option>
+                                            <option value="engineering">Engineering</option>
+                                            <option value="biology">Biology</option>
+                                            <option value="chemistry">Chemistry</option>
+                                            <option value="statistics">Statistics & Data Science</option>
+                                            <option value="other">Other STEM</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="level" class="form-label fw-bold">Difficulty Level <span
+                                                class="text-danger">*</span></label>
+                                        <select class="form-select" id="level" required>
+                                            <option value="">Select level...</option>
+                                            <option value="beginner">Beginner</option>
+                                            <option value="intermediate">Intermediate</option>
+                                            <option value="advanced">Advanced</option>
+                                            <option value="graduate">Graduate Level</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="description" class="form-label fw-bold">Club Description <span
+                                            class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="description" rows="4"
+                                        placeholder="Describe what you'll be studying, your goals, and what participants can expect..."
+                                        required></textarea>
+                                    <div class="form-text">Be specific about the book, topics, and learning objectives.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Book/Resource Information -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body p-4">
+                                <h4 class="card-title mb-4"><i class="fas fa-book me-2 text-success"></i>Book &
+                                    Resources</h4>
+
+                                <div class="mb-3">
+                                    <label for="bookTitle" class="form-label fw-bold">Primary Textbook/Resource <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="bookTitle"
+                                        placeholder="e.g., Introduction to Quantum Mechanics by David J. Griffiths"
+                                        required>
+                                </div>
+
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="author" class="form-label fw-bold">Author(s)</label>
+                                        <input type="text" class="form-control" id="author"
+                                            placeholder="e.g., David J. Griffiths">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edition" class="form-label fw-bold">Edition/Year</label>
+                                        <input type="text" class="form-control" id="edition"
+                                            placeholder="e.g., 3rd Edition (2018)">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="additionalResources" class="form-label fw-bold">Additional
+                                        Resources</label>
+                                    <textarea class="form-control" id="additionalResources" rows="3"
+                                        placeholder="List any supplementary materials, online resources, or prerequisites..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Schedule & Logistics -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body p-4">
+                                <h4 class="card-title mb-4"><i
+                                        class="fas fa-calendar-alt me-2 text-warning"></i>Schedule & Logistics</h4>
+
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="meetingDay" class="form-label fw-bold">Meeting Day <span
+                                                class="text-danger">*</span></label>
+                                        <select class="form-select" id="meetingDay" required>
+                                            <option value="">Select day...</option>
+                                            <option value="monday">Monday</option>
+                                            <option value="tuesday">Tuesday</option>
+                                            <option value="wednesday">Wednesday</option>
+                                            <option value="thursday">Thursday</option>
+                                            <option value="friday">Friday</option>
+                                            <option value="saturday">Saturday</option>
+                                            <option value="sunday">Sunday</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="meetingTime" class="form-label fw-bold">Meeting Time <span
+                                                class="text-danger">*</span></label>
+                                        <input type="time" class="form-control" id="meetingTime" required>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="timezone" class="form-label fw-bold">Timezone <span
+                                                class="text-danger">*</span></label>
+                                        <select class="form-select" id="timezone" required>
+                                            <option value="">Select timezone...</option>
+                                            <option value="UTC">UTC</option>
+                                            <option value="EST">EST (Eastern)</option>
+                                            <option value="CST">CST (Central)</option>
+                                            <option value="MST">MST (Mountain)</option>
+                                            <option value="PST">PST (Pacific)</option>
+                                            <option value="GMT">GMT (London)</option>
+                                            <option value="CET">CET (Central Europe)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="duration" class="form-label fw-bold">Session Duration</label>
+                                        <select class="form-select" id="duration">
+                                            <option value="60">1 hour</option>
+                                            <option value="90" selected>1.5 hours</option>
+                                            <option value="120">2 hours</option>
+                                            <option value="150">2.5 hours</option>
+                                            <option value="180">3 hours</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="frequency" class="form-label fw-bold">Meeting Frequency <span
+                                                class="text-danger">*</span></label>
+                                        <select class="form-select" id="frequency" required>
+                                            <option value="">Select frequency...</option>
+                                            <option value="weekly">Weekly</option>
+                                            <option value="biweekly">Bi-weekly</option>
+                                            <option value="monthly">Monthly</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="maxMembers" class="form-label fw-bold">Maximum Members</label>
+                                        <select class="form-select" id="maxMembers">
+                                            <option value="8">8 members</option>
+                                            <option value="12" selected>12 members</option>
+                                            <option value="15">15 members</option>
+                                            <option value="20">20 members</option>
+                                            <option value="25">25 members</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="platform" class="form-label fw-bold">Meeting Platform <span
+                                            class="text-danger">*</span></label>
+                                    <select class="form-select" id="platform" required>
+                                        <option value="">Select platform...</option>
+                                        <option value="zoom">Zoom</option>
+                                        <option value="discord">Discord</option>
+                                        <option value="teams">Microsoft Teams</option>
+                                        <option value="meet">Google Meet</option>
+                                        <option value="other">Other (specify in notes)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Club Settings -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body p-4">
+                                <h4 class="card-title mb-4"><i class="fas fa-cogs me-2 text-info"></i>Club Settings</h4>
+
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="privateClub">
+                                        <label class="form-check-label fw-bold" for="privateClub">
+                                            Private Club
+                                        </label>
+                                        <div class="form-text">Private clubs are not listed in public search and can
+                                            only be joined via invitation link.</div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="requireApproval" checked>
+                                        <label class="form-check-label fw-bold" for="requireApproval">
+                                            Require Approval to Join
+                                        </label>
+                                        <div class="form-text">Review and approve new member requests before they can
+                                            join discussions.</div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="prerequisites" class="form-label fw-bold">Prerequisites</label>
+                                    <textarea class="form-control" id="prerequisites" rows="3"
+                                        placeholder="List any required background knowledge, previous courses, or experience..."></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="expectations" class="form-label fw-bold">Member Expectations</label>
+                                    <textarea class="form-control" id="expectations" rows="3"
+                                        placeholder="Describe participation requirements, reading commitments, attendance expectations..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body p-4">
+                                <h4 class="card-title mb-4"><i class="fas fa-user me-2 text-danger"></i>Organizer
+                                    Information</h4>
+
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="organizerName" class="form-label fw-bold">Your Name <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="organizerName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="organizerEmail" class="form-label fw-bold">Contact Email <span
+                                                class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="organizerEmail" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="organizerBio" class="form-label fw-bold">Brief Bio</label>
+                                    <textarea class="form-control" id="organizerBio" rows="3"
+                                        placeholder="Share your background, experience with the subject, and motivation for starting this club..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agreement -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body p-4">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                    <label class="form-check-label" for="agreeTerms">
+                                        I agree to the <a href="error.html" class="text-decoration-none">Community
+                                            Guidelines</a> and <a href="error.html" class="text-decoration-none">Terms
+                                            of Service</a> <span class="text-danger">*</span>
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="agreeModeration">
+                                    <label class="form-check-label" for="agreeModeration">
+                                        I understand that I am responsible for moderating my club and maintaining a
+                                        respectful learning environment
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-lg frost-btn-dark me-3">
+                                <i class="fas fa-plus me-2"></i>Create Club
+                            </button>
+                            <a href="clubs.html" class="btn btn-lg btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Browse
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Tips Section -->
+    <section class="section py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h3 class="text-center fw-bold subheading-color mb-4">Tips for a Successful Club</h3>
+                    <div class="row g-4">
+                        <div class="col-md-4 text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-users fa-2x"></i>
+                            </div>
+                            <h5 class="fw-bold">Engage Members</h5>
+                            <p class="text-muted">Encourage active participation through discussions, questions, and
+                                collaborative problem-solving.</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-clock fa-2x"></i>
+                            </div>
+                            <h5 class="fw-bold">Stay Consistent</h5>
+                            <p class="text-muted">Maintain regular meeting schedules and reading pace to keep momentum
+                                going.</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-heart fa-2x"></i>
+                            </div>
+                            <h5 class="fw-bold">Build Community</h5>
+                            <p class="text-muted">Foster a supportive environment where members feel comfortable asking
+                                questions and sharing insights.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Modal -->
+    <div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="newsletterModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newsletterModalLabel">
+                        <i class="fas fa-envelope me-2"></i>Subscribe to Our Newsletter
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-3">Stay updated with the sites development! We promise not to spam you :)</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="newsletterEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="newsletterEmail" placeholder="Enter your email"
+                                required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                I agree to receive newsletters and updates from Likeminds
+                            </label>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn frost-btn-dark">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Mini About Section -->
+                <div class="col-md-4">
+                    <h5 class="mb-3">Likeminds</h5>
+                    <p class="mb-3">A platform connecting STEM enthusiasts through book clubs and study groups. Join our
+                        community of curious minds exploring science, technology, engineering, and mathematics together.
+                    </p>
+
+                    <!-- Newsletter Signup -->
+                    <div class="newsletter-signup mb-3">
+                        <h6 class="mb-2">Stay Updated</h6>
+                        <button type="button" class="btn btn-sm frost-btn-dark" data-bs-toggle="modal"
+                            data-bs-target="#newsletterModal">
+                            <i class="fas fa-envelope me-1"></i>Subscribe to the Development Newsletter
+                        </button>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener" class="text-decoration-none"
+                            aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.twitter.com" target="_blank" rel="noopener" class="text-decoration-none"
+                            aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/brian-dineen-62641529a" target="_blank" rel="noopener"
+                            class="text-decoration-none" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/brian2001dineen-afk/likeminds" target="_blank" rel="noopener"
+                            class="text-decoration-none" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="col-md-4">
+                    <h5 class="mb-3 d-none d-md-block">Quick Links</h5>
+
+                    <div class="row row-cols-2 row-cols-md-1 g-2">
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Privacy Policy</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Terms & Conditions</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Cookie Policy</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Community Guidelines</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Help & Support</a>
+                        </div>
+                        <div class="col">
+                            <a href="error.html" class="text-decoration-none d-block">Accessibility</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <section id="contact" class="col-md-4">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <div class="contact-info">
+                        <div class="row g-3">
+                            <div class="col-sm-6 col-md-12">
+                                <div class="mb-3">
+                                    <strong>Address:</strong><br>
+                                    Crossmahon<br>
+                                    Bandon<br>
+                                    Co. Cork<br>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                <div class="mb-3">
+                                    <strong>Phone:</strong><br>
+                                    <a href="tel:+353 023 456 7890" class="text-decoration-none">+353 023 456 7890</a>
+                                </div>
+                                <div class="mb-3">
+                                    <strong>Email:</strong><br>
+                                    <a href="mailto:brian2001dineen@gmail.com"
+                                        class="text-decoration-none">brian2001dineen@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Copyright Section -->
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">© 2025 Likeminds.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button onclick="scrollToTop()" class="btn btn-sm frost-btn-dark" aria-label="Back to top">
+                        <i class="fas fa-arrow-up me-1"></i>Back to Top
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!-- JavaScript -->
+    <script>
+        // Back to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>
