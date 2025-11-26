@@ -1,17 +1,17 @@
 ---
 name: User Story Template
 about: Describe this issue template's purpose here.
-title: 'User Story: '
-labels: ''
-assignees: ''
-
+title: "User Story: "
+labels: "_must-have"
+assignees: "brian2001dineen-afk"
 ---
 
-As a: USER
+**As a:** USER
 
-I Can: ACTION
+**I can:** ACTION
 
-So That: BENEFIT
+**so that:** BENEFIT
 
-AC1:
-- [ ] Task1:
+> Acceptance Criteria:
+
+-  [ ]
