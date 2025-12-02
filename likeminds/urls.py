@@ -17,10 +17,19 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def placeholder_view():
+    return HttpResponse(b"This page is under construction.")
+
 
 urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("admin/", admin.site.urls),
     path("summernote/", include("django_summernote.urls")),
-    path("", ),
+    path("", include("home.urls"), name='home-urls'),
+    path('clubs/', placeholder_view, name='clubs'),
+    path('create_club/', placeholder_view, name='create_club'),
+    path('signup/', placeholder_view, name='signup'),
+    path('events/', placeholder_view, name='events'),
 ]
