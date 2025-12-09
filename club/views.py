@@ -22,3 +22,13 @@ def club_detail(request, slug):
     return render(request, 'club_detail.html', {
         'club': club,
     })
+
+def club_create(request):
+    """
+    Show the form for creating a new :model:`club.Club`.
+    """
+    # club_form = ClubForm()
+    template_name = 'create.html'
+
+    print('hi')
+    return render(request, 'club/create.html')
