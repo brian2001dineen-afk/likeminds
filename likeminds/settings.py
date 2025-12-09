@@ -16,7 +16,7 @@ import sys
 from django.contrib.messages import constants as messages
 import dj_database_url
 if os.path.isfile('env.py'):
-    import env
+    import env # noqa F401  # Import for side effects (sets environment variables)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -56,10 +56,20 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'django_summernote',
     'cloudinary',
+    'club',
+    'home',
 ]
 
 SITE_ID = 1
+
+# Use allauth and django authentication backends
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
 LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
 LOGOUT_REDIRECT_URL = '/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -76,6 +86,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
 ]
+
 
 ROOT_URLCONF = "likeminds.urls"
 
@@ -138,7 +149,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'none' # Skip email verification for simplicity
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
