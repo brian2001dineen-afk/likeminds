@@ -149,7 +149,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ACCOUNT_FORMS = {'signup': 'home.forms.CustomSignupForm'}
+ACCOUNT_FORMS = {
+    'signup': 'home.forms.CustomSignupForm',
+    'login': 'home.forms.CustomLoginForm',
+}
+
+SIGNUP_PASSWORD_ENTER_TWICE = True
 
 ACCOUNT_EMAIL_VERIFICATION = 'none' # Skip email verification for simplicity
 

@@ -1,5 +1,5 @@
 from django import forms
-from allauth.account.forms import SignupForm
+from allauth.account.forms import SignupForm, LoginForm
 
 # Custom signup form
 class CustomSignupForm(SignupForm):
@@ -34,3 +34,9 @@ class CustomSignupForm(SignupForm):
         if password1 and password2 and password1 != password2:
             self.add_error('password2', "Passwords do not match.")
         return cleaned_data
+
+class CustomLoginForm(LoginForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({'class': 'form-control'})
