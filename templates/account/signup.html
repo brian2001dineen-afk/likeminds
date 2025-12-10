@@ -21,7 +21,10 @@
                 <!-- Signup Form -->
                 <div class="card border-1 shadow-lg">
                     <div class="card-body p-4">
-                        <form class="signup" id="signup_form" method="post" action="">
+                        <form class="signup"
+                              id="signup_form"
+                              method="post"
+                              action="{% url 'account_signup' %}">
                             {% csrf_token %}
                             <div class="mb-3">
                                 <label for="signupName" class="form-label fw-bold text-start d-block">
@@ -48,8 +51,8 @@
                                     Password <span class="text-danger">*</span>
                                 </label>
                                 <div class="input-group">
-                                    {{ form.password }}
-                                    {% if form.password.errors %}<div class="text-danger">{{ form.password.errors }}</div>{% endif %}
+                                    {{ form.password1 }}
+                                    {% if form.password1.errors %}<div class="text-danger">{{ form.password1.errors }}</div>{% endif %}
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -58,10 +61,12 @@
                                     Confirm Password <span class="text-danger">*</span>
                                 </label>
                                 <div class="input-group">
-                                    {{ form.confirm_password }}
-                                    {% if form.confirm_password.errors %}<div class="text-danger">{{ form.confirm_password.errors }}</div>{% endif %}
+                                    {{ form.password2 }}
+                                    {% if form.password2.errors %}<div class="text-danger">{{ form.password2.errors }}</div>{% endif %}
                                 </div>
                             </div>
+                            {% if form.non_field_errors %}<div class="mb-3 text-danger">{{ form.non_field_errors }}</div>{% endif %}
+                            {% if form.errors %}<div class="mb-3 text-danger">{{ form.errors }}</div>{% endif %}
                             <button type="submit" class="btn btn-lg frost-btn-dark">{% trans "Sign up" %}</button>
                         </form>
                     </div>

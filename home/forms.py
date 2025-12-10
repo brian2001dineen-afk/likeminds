@@ -1,6 +1,17 @@
 from django import forms
+from allauth.account.forms import SignupForm
 
-class CustomSignupForm(forms.Form):
+# Custom signup form
+class CustomSignupForm(SignupForm):
+    """
+    Ensures that all form fields have the 'form-control' CSS class for Bootstrap styling.
+    """
+    # Loop through all fields and add 'form-control' class
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({'class': 'form-control'})
+    # Render form fields with custom placeholders and IDs
     username = forms.CharField(
         max_length=150,
         widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'signupName', 'placeholder': 'Your name'})
@@ -8,16 +19,18 @@ class CustomSignupForm(forms.Form):
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={'class': 'form-control', 'id': 'signupEmail', 'placeholder': 'Enter your email address'})
     )
-    password = forms.CharField(
+    password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'id': 'signupPassword', 'placeholder': 'Enter your password'})
     )
-    confirm_password = forms.CharField(
+    password2 = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'id': 'signupConfirmPassword', 'placeholder': 'Enter your password again'})
     )
 
+    # Ensure passwords match
     def clean(self):
         cleaned_data = super().clean()
-        password = cleaned_data.get("password")
-        confirm_password = cleaned_data.get("confirm_password")
-        if password and confirm_password and password != confirm_password:
-            self.add_error('confirm_password', "Passwords do not match.")
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            self.add_error('password2', "Passwords do not match.")
+        return cleaned_data
