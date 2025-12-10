@@ -89,19 +89,19 @@
                                    aria-expanded="false">Info</a>
                                 <ul class="nav-item dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-item" href="#about">About</a>
+                                        <a class="nav-link dropdown-item" href="{% url 'home' %}#about">About</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link dropdown-item" href="#contact">Contact</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-item" href="#faq">FAQ</a>
+                                        <a class="nav-link dropdown-item" href="{% url 'home' %}#faq">FAQ</a>
                                     </li>
                                 </ul>
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link" href="#about">About</a>
+                                <a class="nav-link" href="home/#about">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#contact">Contact</a>
