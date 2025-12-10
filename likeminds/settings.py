@@ -149,6 +149,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ACCOUNT_FORMS = {'signup': 'home.forms.CustomSignupForm'}
+
 ACCOUNT_EMAIL_VERIFICATION = 'none' # Skip email verification for simplicity
 
 # Internationalization
