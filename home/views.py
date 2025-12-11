@@ -20,6 +20,14 @@ def error_404_view(request, exception):
     print(exception)
     return render(request, "home/404.html", status=404)
 
+def error_500_view(request):
+    """
+    Renders a custom 500 error page.
+    **Template:**
+    :template:`home/404.html`
+    """
+    return render(request, "home/404.html", status=500)
+
 def signup_view(request):
     """
     Handles user signup using a custom signup form.
