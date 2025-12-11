@@ -11,6 +11,15 @@ def home(request):
     """
     return render(request, "home/home.html")
 
+def error_404_view(request, exception):
+    """
+    Renders a custom 404 error page.
+    **Template:**
+    :template:`home/404.html`
+    """
+    print(exception)
+    return render(request, "home/404.html", status=404)
+
 def signup_view(request):
     """
     Handles user signup using a custom signup form.
