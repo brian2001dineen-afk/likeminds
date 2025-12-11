@@ -78,7 +78,7 @@
                                    href="{% url 'account_login' %}">Login</a>
                             </li>
                         {% endif %}
-                        <!-- TODO: Style this -->
+                        <!-- Clean up navbar depending on whether user is logged in -->
                         {% if user.is_authenticated %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle"
@@ -101,13 +101,13 @@
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link" href="home/#about">About</a>
+                                <a class="nav-link" href="{% url 'home' %}#about">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#contact">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#faq">FAQ</a>
+                                <a class="nav-link" href="{% url 'home' %}#faq">FAQ</a>
                             </li>
                         {% endif %}
                         <!-- show user status message -->
