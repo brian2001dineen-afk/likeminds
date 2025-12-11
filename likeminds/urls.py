@@ -19,6 +19,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
 
+handler404 = 'home.views.error_404_view'
+
 def placeholder_view():
     return HttpResponse(b"This page is under construction.")
 
