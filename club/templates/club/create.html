@@ -1,7 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-    {% load static %}
-    {% load crispy_forms_tags %}
     <!-- Hero Section -->
     <section class="section pt-4">
         <div class="container">
@@ -29,7 +28,7 @@
                         </p>
                         <ul class="mb-0">
                             <li>Choose a well-known textbook or resource in your field</li>
-                            <li>Set a realistic reading pace and meeting schedule</li>
+                            <li>Set a realistic working pace and meeting schedule</li>
                             <li>Provide clear expectations for participation</li>
                             <li>Consider the target audience and difficulty level</li>
                         </ul>
@@ -39,11 +38,13 @@
         </div>
     </section>
     <!-- Club Creation Form -->
+    {% load crispy_forms_tags %}
     <section class="section py-4">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form>
+                    <form method="post" action="">
+                        {% csrf_token %}
                         <!-- Basic Information -->
                         <div class="card border-0 shadow-sm mb-4">
                             <div class="card-body p-4">
@@ -51,241 +52,23 @@
                                     <i class="fas fa-info-circle me-2 text-highlight"></i>Basic
                                     Information
                                 </h4>
+                                <!-- Club Name -->
                                 <div class="mb-3">
-                                    <label for="clubName" class="form-label fw-bold">
+                                    <label for="{{ form.title.id_for_label }}" class="form-label fw-bold">
                                         Club Name <span class="text-danger">*</span>
                                     </label>
-                                    <input type="text"
-                                           class="form-control"
-                                           id="clubName"
-                                           placeholder="e.g., Quantum Mechanics Study Group"
-                                           required>
-                                    <div class="form-text">
-                                        Choose a descriptive name that includes the subject and type
-                                        of study.
-                                    </div>
+                                    {{ form.title }}
+                                    <div class="form-text">Choose a descriptive name that includes the subject and type of study.</div>
+                                    {% if form.title.errors %}<div class="text-danger">{{ form.title.errors }}</div>{% endif %}
                                 </div>
-                                <div class="row g-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label for="subject" class="form-label fw-bold">
-                                            Subject <span class="text-danger">*</span>
-                                        </label>
-                                        <select class="form-select" id="subject" required>
-                                            <option value="">Select a subject...</option>
-                                            <option value="physics">Physics</option>
-                                            <option value="mathematics">Mathematics</option>
-                                            <option value="programming">Programming & Computer Science</option>
-                                            <option value="engineering">Engineering</option>
-                                            <option value="biology">Biology</option>
-                                            <option value="chemistry">Chemistry</option>
-                                            <option value="statistics">Statistics & Data Science</option>
-                                            <option value="other">Other STEM</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="level" class="form-label fw-bold">
-                                            Difficulty Level <span class="text-danger">*</span>
-                                        </label>
-                                        <select class="form-select" id="level" required>
-                                            <option value="">Select level...</option>
-                                            <option value="beginner">Beginner</option>
-                                            <option value="intermediate">Intermediate</option>
-                                            <option value="advanced">Advanced</option>
-                                            <option value="graduate">Graduate Level</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <!-- Club Excerpt -->
                                 <div class="mb-3">
-                                    <label for="description" class="form-label fw-bold">
-                                        Club Description <span class="text-danger">*</span>
+                                    <label for="{{ form.excerpt.id_for_label }}" class="form-label fw-bold">
+                                        Club Excerpt <span class="text-danger">*</span>
                                     </label>
-                                    <textarea class="form-control"
-                                              id="description"
-                                              rows="4"
-                                              placeholder="Describe what you'll be studying, your goals, and what participants can expect..."
-                                              required></textarea>
-                                    <div class="form-text">Be specific about the book, topics, and learning objectives.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Book/Resource Information -->
-                        <div class="card border-0 shadow-sm mb-4">
-                            <div class="card-body p-4">
-                                <h4 class="card-title mb-4">
-                                    <i class="fas fa-book me-2 text-highlight"></i>Book &
-                                    Resources
-                                </h4>
-                                <div class="mb-3">
-                                    <label for="bookTitle" class="form-label fw-bold">
-                                        Primary Textbook/Resource <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="text"
-                                           class="form-control"
-                                           id="bookTitle"
-                                           placeholder="e.g., Introduction to Quantum Mechanics by David J. Griffiths"
-                                           required>
-                                </div>
-                                <div class="row g-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label for="author" class="form-label fw-bold">Author(s)</label>
-                                        <input type="text"
-                                               class="form-control"
-                                               id="author"
-                                               placeholder="e.g., David J. Griffiths">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="edition" class="form-label fw-bold">Edition/Year</label>
-                                        <input type="text"
-                                               class="form-control"
-                                               id="edition"
-                                               placeholder="e.g., 3rd Edition (2018)">
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="additionalResources" class="form-label fw-bold">
-                                        Additional
-                                        Resources
-                                    </label>
-                                    <textarea class="form-control"
-                                              id="additionalResources"
-                                              rows="3"
-                                              placeholder="List any supplementary materials, online resources, or prerequisites..."></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Schedule & Logistics -->
-                        <div class="card border-0 shadow-sm mb-4">
-                            <div class="card-body p-4">
-                                <h4 class="card-title mb-4">
-                                    <i class="fas fa-calendar-alt me-2 text-highlight"></i>Schedule & Logistics
-                                </h4>
-                                <div class="row g-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label for="meetingDay" class="form-label fw-bold">
-                                            Meeting Day <span class="text-danger">*</span>
-                                        </label>
-                                        <select class="form-select" id="meetingDay" required>
-                                            <option value="">Select day...</option>
-                                            <option value="monday">Monday</option>
-                                            <option value="tuesday">Tuesday</option>
-                                            <option value="wednesday">Wednesday</option>
-                                            <option value="thursday">Thursday</option>
-                                            <option value="friday">Friday</option>
-                                            <option value="saturday">Saturday</option>
-                                            <option value="sunday">Sunday</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="meetingTime" class="form-label fw-bold">
-                                            Meeting Time <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="time" class="form-control" id="meetingTime" required>
-                                    </div>
-                                </div>
-                                <div class="row g-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label for="timezone" class="form-label fw-bold">
-                                            Timezone <span class="text-danger">*</span>
-                                        </label>
-                                        <select class="form-select" id="timezone" required>
-                                            <option value="">Select timezone...</option>
-                                            <option value="UTC">UTC</option>
-                                            <option value="EST">EST (Eastern)</option>
-                                            <option value="CST">CST (Central)</option>
-                                            <option value="MST">MST (Mountain)</option>
-                                            <option value="PST">PST (Pacific)</option>
-                                            <option value="GMT">GMT (London)</option>
-                                            <option value="CET">CET (Central Europe)</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="duration" class="form-label fw-bold">Session Duration</label>
-                                        <select class="form-select" id="duration">
-                                            <option value="60">1 hour</option>
-                                            <option value="90" selected>1.5 hours</option>
-                                            <option value="120">2 hours</option>
-                                            <option value="150">2.5 hours</option>
-                                            <option value="180">3 hours</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row g-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label for="frequency" class="form-label fw-bold">
-                                            Meeting Frequency <span class="text-danger">*</span>
-                                        </label>
-                                        <select class="form-select" id="frequency" required>
-                                            <option value="">Select frequency...</option>
-                                            <option value="weekly">Weekly</option>
-                                            <option value="biweekly">Bi-weekly</option>
-                                            <option value="monthly">Monthly</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="maxMembers" class="form-label fw-bold">Maximum Members</label>
-                                        <select class="form-select" id="maxMembers">
-                                            <option value="8">8 members</option>
-                                            <option value="12" selected>12 members</option>
-                                            <option value="15">15 members</option>
-                                            <option value="20">20 members</option>
-                                            <option value="25">25 members</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="platform" class="form-label fw-bold">
-                                        Meeting Platform <span class="text-danger">*</span>
-                                    </label>
-                                    <select class="form-select" id="platform" required>
-                                        <option value="">Select platform...</option>
-                                        <option value="zoom">Zoom</option>
-                                        <option value="discord">Discord</option>
-                                        <option value="teams">Microsoft Teams</option>
-                                        <option value="meet">Google Meet</option>
-                                        <option value="other">Other (specify in notes)</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Club Settings -->
-                        <div class="card border-0 shadow-sm mb-4">
-                            <div class="card-body p-4">
-                                <h4 class="card-title mb-4">
-                                    <i class="fas fa-cogs me-2 text-highlight"></i>Club Settings
-                                </h4>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="privateClub">
-                                        <label class="form-check-label fw-bold" for="privateClub">Private Club</label>
-                                        <div class="form-text">
-                                            Private clubs are not listed in public search and can
-                                            only be joined via invitation link.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="requireApproval" checked>
-                                        <label class="form-check-label fw-bold" for="requireApproval">Require Approval to Join</label>
-                                        <div class="form-text">
-                                            Review and approve new member requests before they can
-                                            join discussions.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="prerequisites" class="form-label fw-bold">Prerequisites</label>
-                                    <textarea class="form-control"
-                                              id="prerequisites"
-                                              rows="3"
-                                              placeholder="List any required background knowledge, previous courses, or experience..."></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="expectations" class="form-label fw-bold">Member Expectations</label>
-                                    <textarea class="form-control"
-                                              id="expectations"
-                                              rows="3"
-                                              placeholder="Describe participation requirements, reading commitments, attendance expectations..."></textarea>
+                                    {{ form.excerpt }}
+                                    <div class="form-text">Be specific about any chosen resources, topics, and learning objectives.</div>
+                                    {% if form.excerpt.errors %}<div class="text-danger">{{ form.excerpt.errors }}</div>{% endif %}
                                 </div>
                             </div>
                         </div>
@@ -296,26 +79,129 @@
                                     <i class="fas fa-user me-2 text-highlight"></i>Organizer
                                     Information
                                 </h4>
-                                <div class="row g-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label for="organizerName" class="form-label fw-bold">
-                                            Your Name <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="text" class="form-control" id="organizerName" required>
+                                <!-- Organizer Name -->
+                                <div class="mb-3">
+                                    <label for="{{ form.organizer_name.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Your Name <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.organizer_name }}
+                                    {% if form.organizer_name.errors %}<div class="text-danger">{{ form.organizer_name.errors }}</div>{% endif %}
+                                </div>
+                                <!-- Organizer Email -->
+                                <div class="mb-3">
+                                    <label for="{{ form.organizer_email.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Contact Email <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.organizer_email }}
+                                    <div class="form-text">
+                                        This is for potential members to get in touch with you and inquire about anything specific. It does not have to be your account username or sign-up email.
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="organizerEmail" class="form-label fw-bold">
-                                            Contact Email <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="email" class="form-control" id="organizerEmail" required>
+                                    {% if form.organizer_email.errors %}<div class="text-danger">{{ form.organizer_email.errors }}</div>{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Club brief -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body p-4">
+                                <h4 class="card-title mb-4">
+                                    <i class="fas fa-book me-2 text-highlight"></i>Introduction and Content
+                                </h4>
+                                <!-- Personal Introduction -->
+                                <div class="mb-3">
+                                    <label for="{{ form.personal_intro.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Personal Introduction <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.personal_intro }}
+                                    <div class="form-text">
+                                        No need to go into great detail here - just a brief introduction to let potential members know who you are and why you're passionate about this subject.
                                     </div>
+                                    {% if form.personal_intro.errors %}<div class="text-danger">{{ form.personal_intro.errors }}</div>{% endif %}
+                                </div>
+                                <!-- Club Briefing -->
+                                <div class="mb-3">
+                                    <label for="{{ form.club_briefing.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Club Briefing <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.club_briefing }}
+                                    {% if form.club_briefing.errors %}<div class="text-danger">{{ form.club_briefing.errors }}</div>{% endif %}
+                                </div>
+                                <!-- Prerequisites -->
+                                <div class="mb-3">
+                                    <label for="{{ form.prerequisites.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Prerequisites <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.prerequisites }}
+                                    {% if form.prerequisites.errors %}<div class="text-danger">{{ form.prerequisites.errors }}</div>{% endif %}
+                                </div>
+                                <!-- Expectations -->
+                                <div class="mb-3">
+                                    <label for="{{ form.expectations.id_for_label }}" class="form-label fw-bold">
+                                        Member Expectations <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.expectations }}
+                                    {% if form.expectations.errors %}<div class="text-danger">{{ form.expectations.errors }}</div>{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Schedule & Logistics -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body p-4">
+                                <h4 class="card-title mb-4">
+                                    <i class="fas fa-calendar-alt me-2 text-highlight"></i>Schedule & Logistics
+                                </h4>
+                                <!-- Schedule Description -->
+                                <div class="mb-3">
+                                    <label for="{{ form.schedule_description.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Proposed Schedule/Meeting Arrangements <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.schedule_description }}
+                                    {% if form.schedule_description.errors %}
+                                        <div class="text-danger">{{ form.schedule_description.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <!-- Max Members -->
+                                <div class="mb-3">
+                                    <label for="{{ form.max_members.id_for_label }}" class="form-label fw-bold">Maximum Members</label>
+                                    {{ form.max_members }}
+                                    <div class="form-text">Note that the total number of members includes the club creator.</div>
+                                    {% if form.max_members.errors %}<div class="text-danger">{{ form.max_members.errors }}</div>{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Club Settings -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body p-4">
+                                <h4 class="card-title mb-4">
+                                    <i class="fas fa-cogs me-2 text-highlight"></i>Club Settings
+                                </h4>
+                                <!-- Club Settings -->
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        {{ form.is_private }}
+                                        <label class="form-check-label fw-bold"
+                                               for="{{ form.is_private.id_for_label }}">Private Club</label>
+                                        <div class="form-text">
+                                            Private clubs are not listed in public search and can only be joined via the club page link.
+                                        </div>
+                                    </div>
+                                    {% if form.is_private.errors %}<div class="text-danger">{{ form.is_private.errors }}</div>{% endif %}
                                 </div>
                                 <div class="mb-3">
-                                    <label for="organizerBio" class="form-label fw-bold">Brief Bio</label>
-                                    <textarea class="form-control"
-                                              id="organizerBio"
-                                              rows="3"
-                                              placeholder="Share your background, experience with the subject, and motivation for starting this club..."></textarea>
+                                    <div class="form-check">
+                                        {{ form.require_approval }}
+                                        <label class="form-check-label fw-bold"
+                                               for="{{ form.require_approval.id_for_label }}">
+                                            Require Approval to Join
+                                        </label>
+                                        <div class="form-text">Review and approve new member requests before they can join discussions.</div>
+                                    </div>
+                                    {% if form.require_approval.errors %}<div class="text-danger">{{ form.require_approval.errors }}</div>{% endif %}
                                 </div>
                             </div>
                         </div>
@@ -323,18 +209,13 @@
                         <div class="card border-0 shadow-sm mb-4">
                             <div class="card-body p-4">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
-                                    <label class="form-check-label" for="agreeTerms">
-                                        I agree to the <a href="error.html" class="text-decoration-none">Community
-                                        Guidelines</a> and <a href="error.html" class="text-decoration-none">Terms
-                                        of Service</a> <span class="text-danger">*</span>
-                                    </label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" id="agreeModeration">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="agreeModeration"
+                                           required>
                                     <label class="form-check-label" for="agreeModeration">
                                         I understand that I am responsible for moderating my club and maintaining a
-                                        respectful learning environment
+                                        respectful learning environment. <span class="text-danger">*</span>
                                     </label>
                                 </div>
                             </div>
@@ -344,65 +225,11 @@
                             <button type="submit" class="btn btn-lg frost-btn-dark me-3">
                                 <i class="fas fa-plus me-2"></i>Create Club
                             </button>
-                            <a href="clubs.html" class="btn btn-lg btn-outline-secondary">
+                            <a href={% url 'clubs' %} class="btn btn-lg btn-outline-secondary">
                                 <i class="fas fa-arrow-left me-2"></i>Back to Browse
                             </a>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Resources Section -->
-    <section class="section py-5 border-top">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h3 class="text-center fw-bold subheading-color mb-4">Recommended Resources</h3>
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <ul class="list-unstyled">
-                                <li class="mb-4">
-                                    <strong><a href="https://github.com/"
-   target="_blank"
-   rel="noopener"
-   class="text-decoration-none">GitHub</a></strong> – great for versioning and
-                                    project management. It's also a useful tool to compile group resources, like notes,
-                                    links (conveniently placed in a README.md file or similar) and to make sure
-                                    knowledge isn't lost - as long as your team remembers to commit. Importantly, it is
-                                    free to use, and is the standard in many STEM disciplines.
-                                </li>
-                                <li class="mb-4">
-                                    <strong><a href="https://www.obsidian.md"
-   target="_blank"
-   rel="noopener"
-   class="text-decoration-none">Obsidian</a></strong> – for note-taking and
-                                    knowledge management. Being able to take and organize notes digitally is very useful
-                                    when your group is online, rather than sharing pictures of handwritten notes. There
-                                    are many tools for this purpose, which you can find online, Obsidian is just a
-                                    personal recommendation, and it is free (Syncing is not, but you should be uploading
-                                    your notes to GitHub anyway).
-                                </li>
-                                <li class="mb-4">
-                                    <strong><a href="https://www.overleaf.com"
-   target="_blank"
-   rel="noopener"
-   class="text-decoration-none">Overleaf</a></strong> – for writing formal
-                                    documents and research. If a member is experienced with LaTeX, then having an
-                                    Overleaf page to formalize your work is incredibly useful for creating presentable
-                                    work from your studies. It does support group collaboration, however this is a paid
-                                    feature.
-                                </li>
-                                <li class="mb-0">
-                                    <strong>Email</strong> – works for some people, but can be quite isolating and
-                                    disconnected. However I mention it here since it can be very useful for bigger group
-                                    updates, as you can typically share content including attachments in one bulk email
-                                    to all members. Aim to keep all attachments on GitHub if you use any, so that
-                                    nothing is lost.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -10,8 +10,8 @@
                 <p class="lead">Create, join, and explore STEM-focused book clubs with ease.</p>
             </div>
             <div class="col-12">
-                <a href="clubs.html" class="m-2 px-4 btn btn-lg frost-btn">Explore Clubs</a>
-                <a href="create.html" class="m-2 px-4 btn btn-lg frost-btn">Create A Club</a>
+                <a href="{% url 'clubs' %}" class="m-2 px-4 btn btn-lg frost-btn">Explore Clubs</a>
+                <a href="{% url 'create' %}" class="m-2 px-4 btn btn-lg frost-btn">Create A Club</a>
             </div>
         </div>
         <!-- Wavy background -->
@@ -37,7 +37,7 @@
         </svg>
     </section>
     <!-- Features Section -->
-    <section id="features" class="section py-5">
+    <section id="features" class="section py-5 border-bottom">
         <div class="container">
             <!-- Section Header -->
             <div class="text-center mb-5">
@@ -92,11 +92,11 @@
         </div>
     </section>
     <!-- About Us Section -->
-    <section id="about" class="section about py-5 bg-light">
+    <section id="about" class="section about py-5 border-bottom">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="text-center mb-5">
+                    <div class="text-center mb-4">
                         <h2 class="fw-bold subheading-color">About Us</h2>
                     </div>
                     <div class="about-content">
@@ -120,7 +120,7 @@
                             such a group in the first place. That's where we come in. Our goal
                             is to make the process of creating and contributing these groups
                             is as easy as possible, while helping to create a greater sense of
-                            community overall through our <a href="events.html">Events</a>.
+                            community.</a>.
                         </p>
                         <p class="mb-4">
                             If you're still not sure what we're about, your answer might be
@@ -143,13 +143,60 @@
         <div class="container">
             <h2 class="fw-bold my-3">Start Your STEM Journey</h2>
             <p class="lead">Be part of a growing community of curious readers and thinkers.</p>
-            <a href="create.html" class="btn btn-lg frost-btn">Sign Up!</a>
+            <a href="{% url 'account_signup' %}" class="btn btn-lg frost-btn">Sign Up!</a>
+        </div>
+    </section>
+    <!-- Resources Section -->
+    <section id="resources" class="section py-5 border-top border-bottom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h3 class="text-center fw-bold subheading-color mb-4">Recommended Resources</h3>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <ul class="list-unstyled">
+                                <li class="mb-4">
+                                    <strong><a href="https://github.com/"
+   target="_blank"
+   rel="noopener"
+   class="text-decoration-none">GitHub</a></strong>
+                                    – great for versioning and
+                                    project management. It's also a useful tool to compile group resources, like notes,
+                                    links (conveniently placed in a README.md file or similar) and to make sure
+                                    knowledge isn't lost - as long as your team remembers to commit. Importantly, it is
+                                    free to use, and is the standard in many STEM disciplines.
+                                </li>
+                                <li class="mb-4">
+                                    <strong><a href="https://www.obsidian.md"
+   target="_blank"
+   rel="noopener"
+   class="text-decoration-none">Obsidian</a></strong> – for note-taking and
+                                    knowledge management. Being able to take and organize notes digitally is very useful
+                                    when your group is online, rather than sharing pictures of handwritten notes. There
+                                    are many tools for this purpose, which you can find on the web. Obsidian is just a
+                                    personal recommendation, and it is free.
+                                </li>
+                                <li class="mb-0">
+                                    <strong><a href="https://www.overleaf.com"
+   target="_blank"
+   rel="noopener"
+   class="text-decoration-none">Overleaf</a></strong> – for writing formal
+                                    documents and research. If a member is experienced with LaTeX, then having an
+                                    Overleaf page is incredibly useful for creating presentable
+                                    work from your studies. It does support group collaboration, however this is a paid
+                                    feature. If you are a student, you may have premium access through your institution.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- FAQ Section -->
     <section id="faq" class="section faq py-5">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-4">
                 <h2 class="fw-bold subheading-color">Frequently Asked Questions</h2>
             </div>
             <div class="row justify-content-center">
@@ -172,7 +219,7 @@
                                 <div class="accordion-body">
                                     <p>
                                         You can search for groups
-                                        <a href="search.html">here!</a> Use tags to find the
+                                        <a href="{% url 'clubs' %}">here!</a> Use tags to find the
                                         specific area or subject you're interested in, or otherwise
                                         search by keyword, as if you were looking for a book in a
                                         library (e.g. "Rudin Analysis", "Munkres Manifolds",
@@ -183,7 +230,7 @@
                                     </p>
                                     <p>
                                         For creating a group, you can do so
-                                        <a href="create.html">here!</a> Make sure you read the group
+                                        <a href="{% url 'create' %}">here!</a> Make sure you read the group
                                         creation guidelines to maximize your chances of finding
                                         members. You may also create a private group. These are
                                         delisted from the public search, and can only be accessed
@@ -213,7 +260,7 @@
                                         made for people like myself who need it (with the bonus of
                                         being a portfolio project). You can however send me a coffee
                                         over on my
-                                        <a href="https://www.ko-fi.com" target="_blank">ko-fi</a>
+                                        <a href="https://ko-fi.com/brian0400" target="_blank">ko-fi</a>
                                         page! I am incredibly grateful for any and all donations,
                                         any and all contributions go towards site costs and
                                         maintenance (and, of course, coffee to fuel my late-night
@@ -244,18 +291,16 @@
                                  data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
                                     <p>
-                                        We have plenty of references over on our
-                                        <a href="#">resources</a> page to help get you started.
                                         Generally, we expect most groups to operate as a cohesive
                                         unit rather than only one person doing the work. If you're
                                         the only one stressed out, then you're probably doing your
                                         peers jobs for them.
+                                        For some useful working and management tools, check out our <a href="#resources">resources</a> section to help get you started.
                                     </p>
                                     <p>
-                                        I would strongly advise using our role designation system or
+                                        I would strongly advise using a role designation system or
                                         similar to assign titles and give purpose to the members of
-                                        your group, and switch them around as necessary (covered in
-                                        our <a href="#">resources</a>). At the end of the day,
+                                        your group, and switch them around as necessary. At the end of the day,
                                         remember we're all here to have fun and learn along the way!
                                         And remember, as always Google is your friend.
                                     </p>
@@ -281,8 +326,7 @@
                                         This is a hard question to answer, and will vary depending
                                         on the people you're with. To keep your group coming back to
                                         the site, we recommend for all members to try to actively
-                                        engage with our site
-                                        <a href="error.html">Events</a>.
+                                        engage with your group page.
                                     </p>
                                     <p>
                                         In terms of communication and collaboration with your group,
@@ -296,7 +340,7 @@
                         </div>
                     </div>
                     <!-- Contact CTA -->
-                    <div id="contact-cta" class="text-center mt-4">
+                    <div id="contact-cta" class="text-center mt-5">
                         <h4 class="mb-3">
                             <strong>Questions not answered?</strong>
                         </h4>
@@ -307,47 +351,4 @@
             </div>
         </div>
     </section>
-    <!-- Newsletter Modal -->
-    <div class="modal fade"
-         id="newsletterModal"
-         tabindex="-1"
-         aria-labelledby="newsletterModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="newsletterModalLabel">
-                        <i class="fas fa-envelope me-2"></i>Subscribe to Our Newsletter
-                    </h5>
-                    <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p class="mb-3">
-                        Stay updated with the sites development! We promise not to spam you
-                        :)
-                    </p>
-                    <form>
-                        <div class="mb-3">
-                            <label for="newsletterEmail" class="form-label">Email address</label>
-                            <input type="email"
-                                   class="form-control"
-                                   id="newsletterEmail"
-                                   placeholder="Enter your email"
-                                   required />
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="agreeTerms" required />
-                            <label class="form-check-label" for="agreeTerms">I agree to receive newsletters and updates from Likeminds</label>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn frost-btn-dark">Subscribe</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock content %}
