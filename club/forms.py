@@ -4,8 +4,21 @@ from django import forms
 
 class ClubForm(forms.ModelForm):
     """
-    Creates a form for :model:`blog.Comment` to create comments
+    Creates a club form for creating and updating club instances.
     """
     class Meta:
         model = Club
-        fields = ('body',)
+        fields = [
+            'name',
+            'excerpt',
+            'organizer_name',
+            'organizer_email',
+            'personal_intro',
+            'club_briefing',
+            'prerequisites',
+            'expectations',
+            'schedule_description',
+            'max_members',
+            'is_private',
+            'require_approval',
+        ]

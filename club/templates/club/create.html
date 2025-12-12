@@ -43,7 +43,8 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form>
+                    <form method="post" action="">
+                        {% csrf_token %}
                         <!-- Basic Information -->
                         <div class="card border-0 shadow-sm mb-4">
                             <div class="card-body p-4">

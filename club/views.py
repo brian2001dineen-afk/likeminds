@@ -1,8 +1,8 @@
 from django.db.models import Count
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from .models import Club
-
+from .forms import ClubForm
 
 # Create your views here.
 
@@ -27,8 +27,13 @@ def club_create(request):
     """
     Show the form for creating a new :model:`club.Club`.
     """
-    # club_form = ClubForm()
-    template_name = 'create.html'
-
-    print('hi')
-    return render(request, 'club/create.html')
+    if request.method == 'POST':
+        form = ClubForm(request.POST)
+        if form.is_valid():
+            club = form.save(commit=False)
+            # Set any fields automatically here, e.g. club.creator = request.user
+            club.save()
+            return redirect('clubs')  # or wherever you want to go after creation
+    else:
+        form = ClubForm()
+    return render(request, 'club/create.html', {'form': form})
