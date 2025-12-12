@@ -1,17 +1,22 @@
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.db.models import Count
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import generic
-from .models import Club
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .forms import ClubForm
+from .models import Club
 
 # Create your views here.
 
-class ClubList(generic.ListView):
+class ClubList(LoginRequiredMixin, generic.ListView):
+    login_url = settings.LOGIN_URL
     queryset = Club.objects.filter(is_private=False).annotate(approved_count=Count('approved_members'))
     template_name = "club/clubs.html"
     paginate_by = 6
 
-
+@login_required(login_url=settings.LOGIN_URL)
 def club_detail(request, slug):
     """
     Display an individual :model:`club.Club`.
@@ -22,6 +27,7 @@ def club_detail(request, slug):
         'club': club,
     })
 
+@login_required(login_url=settings.LOGIN_URL)
 def club_create(request):
     """
     Show the form for creating a new :model:`club.Club`.
