@@ -7,7 +7,7 @@ from .forms import ClubForm
 # Create your views here.
 
 class ClubList(generic.ListView):
-    queryset = Club.objects.filter(status=1).annotate(approved_count=Count('approved_members'))
+    queryset = Club.objects.filter(is_private=False).annotate(approved_count=Count('approved_members'))
     template_name = "club/clubs.html"
     paginate_by = 6
 
@@ -16,10 +16,9 @@ def club_detail(request, slug):
     """
     Display an individual :model:`club.Club`.
     """
-
     queryset = Club.objects.filter(status=1)
     club = get_object_or_404(queryset, slug=slug)
-    return render(request, 'club_detail.html', {
+    return render(request, 'club/club_detail.html', {
         'club': club,
     })
 
@@ -31,7 +30,7 @@ def club_create(request):
         form = ClubForm(request.POST)
         if form.is_valid():
             club = form.save(commit=False)
-            # Set any fields automatically here, e.g. club.creator = request.user
+            club.author = request.user
             club.save()
             return redirect('clubs')  # or wherever you want to go after creation
     else:

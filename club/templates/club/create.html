@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_forms_tags %}
 {% block content %}
     <!-- Hero Section -->
     <section class="section pt-4">
@@ -39,6 +38,7 @@
         </div>
     </section>
     <!-- Club Creation Form -->
+    {% load crispy_forms_tags %}
     <section class="section py-4">
         <div class="container">
             <div class="row justify-content-center">
@@ -52,20 +52,25 @@
                                     <i class="fas fa-info-circle me-2 text-highlight"></i>Basic
                                     Information
                                 </h4>
+                                <!-- Club Name -->
                                 <div class="mb-3">
-                                    <label for="clubName" class="form-label fw-bold">
+                                    <label for="{{ form.title.id_for_label }}" class="form-label fw-bold">
                                         Club Name <span class="text-danger">*</span>
                                     </label>
-                                    <input type="text"
-                                           class="form-control"
-                                           id="clubName"
-                                           placeholder="e.g., Quantum Mechanics Study Group"
-                                           required>
-                                    <div class="form-text">
-                                        Choose a descriptive name that includes the subject and type
-                                        of study.
-                                    </div>
+                                    {{ form.title }}
+                                    <div class="form-text">Choose a descriptive name that includes the subject and type of study.</div>
+                                    {% if form.title.errors %}<div class="text-danger">{{ form.title.errors }}</div>{% endif %}
                                 </div>
+                                <!-- Club Excerpt -->
+                                <div class="mb-3">
+                                    <label for="{{ form.excerpt.id_for_label }}" class="form-label fw-bold">
+                                        Club Excerpt <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.excerpt }}
+                                    <div class="form-text">Be specific about any chosen resources, topics, and learning objectives.</div>
+                                    {% if form.excerpt.errors %}<div class="text-danger">{{ form.excerpt.errors }}</div>{% endif %}
+                                </div>
+                                <!-- old code -->
                                 <div class="mb-3">
                                     <label for="clubExcerpt" class="form-label fw-bold">
                                         Club Excerpt <span class="text-danger">*</span>
@@ -86,6 +91,28 @@
                                     <i class="fas fa-user me-2 text-highlight"></i>Organizer
                                     Information
                                 </h4>
+                                <!-- Organizer Name -->
+                                <div class="mb-3">
+                                    <label for="{{ form.organizer_name.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Your Name <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.organizer_name }}
+                                    {% if form.organizer_name.errors %}<div class="text-danger">{{ form.organizer_name.errors }}</div>{% endif %}
+                                </div>
+                                <!-- Organizer Email -->
+                                <div class="mb-3">
+                                    <label for="{{ form.organizer_email.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Contact Email <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.organizer_email }}
+                                    <div class="form-text">
+                                        This is for potential members to get in touch with you and inquire about anything specific. It does not have to be your account username or sign-up email.
+                                    </div>
+                                    {% if form.organizer_email.errors %}<div class="text-danger">{{ form.organizer_email.errors }}</div>{% endif %}
+                                </div>
+                                <!-- old code -->
                                 <div class="row g-3 mb-3">
                                     <div class="col-md-6">
                                         <label for="organizerName" class="form-label fw-bold">
@@ -111,6 +138,45 @@
                                 <h4 class="card-title mb-4">
                                     <i class="fas fa-book me-2 text-highlight"></i>Introduction and Content
                                 </h4>
+                                <!-- Personal Introduction -->
+                                <div class="mb-3">
+                                    <label for="{{ form.personal_intro.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Personal Introduction <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.personal_intro }}
+                                    <div class="form-text">
+                                        No need to go into great detail here - just a brief introduction to let potential members know who you are and why you're passionate about this subject.
+                                    </div>
+                                    {% if form.personal_intro.errors %}<div class="text-danger">{{ form.personal_intro.errors }}</div>{% endif %}
+                                </div>
+                                <!-- Club Briefing -->
+                                <div class="mb-3">
+                                    <label for="{{ form.club_briefing.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Club Briefing <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.club_briefing }}
+                                    {% if form.club_briefing.errors %}<div class="text-danger">{{ form.club_briefing.errors }}</div>{% endif %}
+                                </div>
+                                <!-- Prerequisites -->
+                                <div class="mb-3">
+                                    <label for="{{ form.prerequisites.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Prerequisites <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.prerequisites }}
+                                    {% if form.prerequisites.errors %}<div class="text-danger">{{ form.prerequisites.errors }}</div>{% endif %}
+                                </div>
+                                <!-- Expectations -->
+                                <div class="mb-3">
+                                    <label for="{{ form.expectations.id_for_label }}" class="form-label fw-bold">
+                                        Member Expectations <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.expectations }}
+                                    {% if form.expectations.errors %}<div class="text-danger">{{ form.expectations.errors }}</div>{% endif %}
+                                </div>
+                                <!-- old code -->
                                 <div class="mb-3">
                                     <label for="personalIntro" class="form-label fw-bold">
                                         Personal Introduction <span class="text-danger">*</span>
@@ -163,6 +229,25 @@
                                 <h4 class="card-title mb-4">
                                     <i class="fas fa-calendar-alt me-2 text-highlight"></i>Schedule & Logistics
                                 </h4>
+                                <!-- Schedule Description -->
+                                <div class="mb-3">
+                                    <label for="{{ form.schedule_description.id_for_label }}"
+                                           class="form-label fw-bold">
+                                        Proposed Schedule/Meeting Arrangements <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.schedule_description }}
+                                    {% if form.schedule_description.errors %}
+                                        <div class="text-danger">{{ form.schedule_description.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <!-- Max Members -->
+                                <div class="mb-3">
+                                    <label for="{{ form.max_members.id_for_label }}" class="form-label fw-bold">Maximum Members</label>
+                                    {{ form.max_members }}
+                                    <div class="form-text">Note that the total number of members includes the club creator.</div>
+                                    {% if form.max_members.errors %}<div class="text-danger">{{ form.max_members.errors }}</div>{% endif %}
+                                </div>
+                                <!-- old code -->
                                 <div class="mb-3">
                                     <label for="scheduleDescription" class="form-label fw-bold">
                                         Proposed Schedule/Meeting Arrangements <span class="text-danger">*</span>
@@ -194,6 +279,30 @@
                                 <h4 class="card-title mb-4">
                                     <i class="fas fa-cogs me-2 text-highlight"></i>Club Settings
                                 </h4>
+                                <!-- Club Settings -->
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        {{ form.is_private }}
+                                        <label class="form-check-label fw-bold"
+                                               for="{{ form.is_private.id_for_label }}">Private Club</label>
+                                        <div class="form-text">
+                                            Private clubs are not listed in public search and can only be joined via the club page link.
+                                        </div>
+                                    </div>
+                                    {% if form.is_private.errors %}<div class="text-danger">{{ form.is_private.errors }}</div>{% endif %}
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        {{ form.require_approval }}
+                                        <label class="form-check-label fw-bold"
+                                               for="{{ form.require_approval.id_for_label }}">
+                                            Require Approval to Join
+                                        </label>
+                                        <div class="form-text">Review and approve new member requests before they can join discussions.</div>
+                                    </div>
+                                    {% if form.require_approval.errors %}<div class="text-danger">{{ form.require_approval.errors }}</div>{% endif %}
+                                </div>
+                                <!-- old code -->
                                 <div class="mb-3">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="clubVisibility">
@@ -210,7 +319,7 @@
                                         <label class="form-check-label fw-bold" for="requireApproval">Require Approval to Join</label>
                                         <div class="form-text">
                                             Review and approve new member requests before they can
-                                            join discussions.
+                                            join.
                                         </div>
                                     </div>
                                 </div>
