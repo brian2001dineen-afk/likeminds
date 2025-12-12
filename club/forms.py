@@ -1,11 +1,46 @@
 from .models import Club
 from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Row, Column, Field, Div
 
 
 class ClubForm(forms.ModelForm):
     """
     Creates a club form for creating and updating club instances.
     """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Crispy helper configured for Bootstrap5 inside modal
+        self.helper = FormHelper()
+        self.helper.form_tag = False  # prevent nested <form> in modal
+        self.helper.disable_csrf = True
+        self.helper.layout = Layout(
+            Field('title'),
+            Field('excerpt'),
+            Div(
+                Row(
+                    Column(Field('organizer_name'), css_class='col-md-6'),
+                    Column(Field('organizer_email'), css_class='col-md-6'),
+                ),
+                css_class='mb-3'
+            ),
+            Field('personal_intro'),
+            Field('club_briefing'),
+            Row(
+                Column(Field('prerequisites'), css_class='col-md-6'),
+                Column(Field('expectations'), css_class='col-md-6'),
+            ),
+            Row(
+                Column(Field('schedule_description'), css_class='col-md-8'),
+                Column(Field('max_members'), css_class='col-md-4'),
+            ),
+            Row(
+                Column(Field('is_private'), css_class='col-md-6'),
+                Column(Field('require_approval'), css_class='col-md-6'),
+            ),
+        )
+
     class Meta:
         model = Club
         fields = [
@@ -85,7 +120,7 @@ class ClubForm(forms.ModelForm):
             'max_members': forms.Select(
                 choices=[(i, str(i)) for i in range(2, 9)],
                 attrs={'class': 'form-select', 'id': 'maxMembers'
-            }),
+                       }),
             'is_private': forms.CheckboxInput(attrs={
                 'class': 'form-check-input',
                 'id': 'clubVisibility',

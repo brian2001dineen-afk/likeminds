@@ -57,7 +57,7 @@
                 {% for club in object_list %}
                     <!-- Render club cards -->
                     <div class="col-lg-4 col-md-6">
-                        <div class="card h-100 border-0 shadow-sm">
+                        <div class="card h-100 border shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title">{{ club.title }}</h5>
                                 <p class="card-text text-muted">{{ club.excerpt }}</p>
@@ -109,7 +109,7 @@
         <div class="container">
             <h2 class="fw-bold my-3">Can't find what you're looking for?</h2>
             <p class="lead">Create your own STEM book club and find like-minded learners.</p>
-            <a href="create.html" class="btn btn-lg frost-btn-dark">Create a Club</a>
+            <a href="{% url 'create' %}" class="btn btn-lg frost-btn-dark">Create a Club</a>
         </div>
     </section>
 {% endblock content %}
