@@ -88,19 +88,28 @@ def club_join(request, slug):
     - Else add directly to approved_members
     """
     if request.method != 'POST':
-        messages.warning(request, 'Deletion cancelled. Please confirm via the modal to proceed.')
+        messages.warning(
+            request, 'Join cancelled. Please use the Join button to submit your request.')
         return redirect('club_detail', slug=slug)
 
     club = get_object_or_404(Club, slug=slug)
 
-    # Already a member or in waitlist: just return
-    if request.user in club.approved_members.all() or request.user in club.unapproved_members.all():
+    # Already a member or in waitlist
+    if request.user in club.approved_members.all():
+        messages.info(
+            request, 'You are already an approved member of this club.')
+        return redirect('club_detail', slug=slug)
+    if request.user in club.unapproved_members.all():
+        messages.info(request, 'Your request is pending approval.')
         return redirect('club_detail', slug=slug)
 
     if club.require_approval:
         club.unapproved_members.add(request.user)
+        messages.success(
+            request, 'Request sent. The organizer must approve your membership.')
     else:
         club.approved_members.add(request.user)
+        messages.success(request, 'You have joined the club successfully!')
     return redirect('club_detail', slug=slug)
 
 
@@ -115,6 +124,7 @@ def club_update(request, slug):
         form = ClubForm(request.POST, instance=club)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Club details updated successfully.')
             return redirect('club_detail', slug=slug)
     else:
         form = ClubForm(instance=club)
@@ -140,7 +150,8 @@ def club_delete(request, slug):
 
     confirm_text = request.POST.get('confirm_text', '')
     if confirm_text.strip() != 'I understand':
-        messages.error(request, "Deletion failed: You must type 'I understand' exactly.")
+        messages.error(
+            request, "Deletion failed: You must type 'I understand' exactly.")
         return redirect('club_detail', slug=slug)
 
     title = club.title
