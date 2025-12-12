@@ -1,3 +1,20 @@
 {% extends "base.html" %}
+{% url 'club_detail' club.slug as club_url %}
 {% load static %}
 {% block content %}
+    <!-- Club Detail Page -->
+    <section class="section py-4">
+        <div class="container border-0">
+            <div class="row justify-content-center">
+                <ul>
+                    <li>
+                        <h2>{{ club.title }}</h2>
+                    </li>
+                    <li>
+                        <p>{{ club.description }}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
