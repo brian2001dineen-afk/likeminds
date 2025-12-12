@@ -30,8 +30,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("admin/", admin.site.urls),
     path("summernote/", include("django_summernote.urls")),
-    path("", include("home.urls"), name='home-urls'),
+    path("", include("home.urls"), name='home'),
     path('clubs/', include("club.urls"), name='clubs'),
-    path('signup/', placeholder_view, name='signup'),
     path('events/', placeholder_view, name='events'),
 ]
