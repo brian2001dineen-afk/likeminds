@@ -70,18 +70,6 @@
                                     <div class="form-text">Be specific about any chosen resources, topics, and learning objectives.</div>
                                     {% if form.excerpt.errors %}<div class="text-danger">{{ form.excerpt.errors }}</div>{% endif %}
                                 </div>
-                                <!-- old code -->
-                                <div class="mb-3">
-                                    <label for="clubExcerpt" class="form-label fw-bold">
-                                        Club Excerpt <span class="text-danger">*</span>
-                                    </label>
-                                    <textarea class="form-control"
-                                              id="description"
-                                              rows="4"
-                                              placeholder="Briefly describe what you'll be studying, your goals, and what participants can expect (max 300 characters)..."
-                                              required></textarea>
-                                    <div class="form-text">Be specific about any chosen resources, topics, and learning objectives.</div>
-                                </div>
                             </div>
                         </div>
                         <!-- Contact Information -->
@@ -111,24 +99,6 @@
                                         This is for potential members to get in touch with you and inquire about anything specific. It does not have to be your account username or sign-up email.
                                     </div>
                                     {% if form.organizer_email.errors %}<div class="text-danger">{{ form.organizer_email.errors }}</div>{% endif %}
-                                </div>
-                                <!-- old code -->
-                                <div class="row g-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label for="organizerName" class="form-label fw-bold">
-                                            Your Name <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="text" class="form-control" id="organizerName" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="organizerEmail" class="form-label fw-bold">
-                                            Contact Email <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="email" class="form-control" id="organizerEmail" required>
-                                    </div>
-                                    <div class="form-text">
-                                        This is for potential members to get in touch with you and inquire about anything specific. It does not have to be your account username or sign-up email.
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -176,51 +146,6 @@
                                     {{ form.expectations }}
                                     {% if form.expectations.errors %}<div class="text-danger">{{ form.expectations.errors }}</div>{% endif %}
                                 </div>
-                                <!-- old code -->
-                                <div class="mb-3">
-                                    <label for="personalIntro" class="form-label fw-bold">
-                                        Personal Introduction <span class="text-danger">*</span>
-                                    </label>
-                                    <textarea class="form-control"
-                                              id="additionalResources"
-                                              rows="4"
-                                              placeholder="Write a little about your background and motivations for starting this club..."
-                                              required></textarea>
-                                </div>
-                                <div class="form-text">
-                                    No need to go into great detail here - just a brief introduction to let potential members know who you are and why you're passionate about this subject.
-                                </div>
-                                <!-- TODO: add markdown support for this field -->
-                                <div class="my-3">
-                                    <label for="clubBriefing" class="form-label fw-bold">
-                                        Club Briefing <span class="text-danger">*</span>
-                                    </label>
-                                    <textarea class="form-control"
-                                              id="additionalResources"
-                                              rows="14"
-                                              placeholder="Write a detailed abstract about your subject choice, including material references, and anything else a potential member will need to get an idea of what the club is about..."
-                                              required></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="prerequisites" class="form-label fw-bold">
-                                        Prerequisites <span class="text-danger">*</span>
-                                    </label>
-                                    <textarea class="form-control"
-                                              id="prerequisites"
-                                              rows="3"
-                                              placeholder="List any required background knowledge, previous courses, or experience..."
-                                              required></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="expectations" class="form-label fw-bold">
-                                        Member Expectations <span class="text-danger">*</span>
-                                    </label>
-                                    <textarea class="form-control"
-                                              id="expectations"
-                                              rows="3"
-                                              placeholder="Describe participation requirements, reading commitments, attendance expectations..."
-                                              required></textarea>
-                                </div>
                             </div>
                         </div>
                         <!-- Schedule & Logistics -->
@@ -246,30 +171,6 @@
                                     {{ form.max_members }}
                                     <div class="form-text">Note that the total number of members includes the club creator.</div>
                                     {% if form.max_members.errors %}<div class="text-danger">{{ form.max_members.errors }}</div>{% endif %}
-                                </div>
-                                <!-- old code -->
-                                <div class="mb-3">
-                                    <label for="scheduleDescription" class="form-label fw-bold">
-                                        Proposed Schedule/Meeting Arrangements <span class="text-danger">*</span>
-                                    </label>
-                                    <textarea class="form-control"
-                                              id="scheduleDescription"
-                                              rows="6"
-                                              placeholder="Describe how you will meet each week, e.g. Zoom, Teams or otherwise. Bullet point a proposed schedule for when you will meet. This can be left blank and changed later to suit member needs, but it's recommended to give some context for how you plan to schedule meetings..."
-                                              required></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="maxMembers" class="form-label fw-bold">Maximum Members</label>
-                                    <select class="form-select" id="maxMembers">
-                                        <option value="2">2 members</option>
-                                        <option value="3">3 members</option>
-                                        <option value="4" selected>4 members</option>
-                                        <option value="5">5 members</option>
-                                        <option value="6">6 members</option>
-                                        <option value="7">7 members</option>
-                                        <option value="8">8 members</option>
-                                    </select>
-                                    <div class="form-text">Note that the total number of members includes the club creator.</div>
                                 </div>
                             </div>
                         </div>
@@ -301,27 +202,6 @@
                                         <div class="form-text">Review and approve new member requests before they can join discussions.</div>
                                     </div>
                                     {% if form.require_approval.errors %}<div class="text-danger">{{ form.require_approval.errors }}</div>{% endif %}
-                                </div>
-                                <!-- old code -->
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="clubVisibility">
-                                        <label class="form-check-label fw-bold" for="clubVisibility">Private Club</label>
-                                        <div class="form-text">
-                                            Private clubs are not listed in public search and can
-                                            only be joined via the club page link.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="requireApproval" checked>
-                                        <label class="form-check-label fw-bold" for="requireApproval">Require Approval to Join</label>
-                                        <div class="form-text">
-                                            Review and approve new member requests before they can
-                                            join.
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

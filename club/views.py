@@ -31,6 +31,7 @@ def club_create(request):
         if form.is_valid():
             club = form.save(commit=False)
             club.author = request.user
+            club.approved_members.add(request.user)  # Add creator as an approved member
             club.save()
             return redirect('clubs')  # or wherever you want to go after creation
     else:

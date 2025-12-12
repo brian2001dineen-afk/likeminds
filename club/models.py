@@ -12,6 +12,7 @@ class Club(models.Model):
     """
     Stores a club created by a user :model:`auth.User`.
     """
+    # TODO: assign meaningful defaults where applicable
     # Logic fields
     slug = models.SlugField(unique=True, blank=True)
     author = models.ForeignKey(

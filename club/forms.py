@@ -82,9 +82,9 @@ class ClubForm(forms.ModelForm):
                 'required': 'required',
                 'id': 'scheduleDescription',
             }),
-            'max_members': forms.Select(attrs={
-                'class': 'form-select',
-                'id': 'maxMembers',
+            'max_members': forms.Select(
+                choices=[(i, str(i)) for i in range(2, 9)],
+                attrs={'class': 'form-select', 'id': 'maxMembers'
             }),
             'is_private': forms.CheckboxInput(attrs={
                 'class': 'form-check-input',
