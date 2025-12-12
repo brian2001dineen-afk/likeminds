@@ -36,6 +36,8 @@ The goal is to make learning collaborative and engaging by combining structured 
 
 ### User Stories
 
+I used an Agile methodology, with my project board linked [here](https://github.com/users/brian2001dineen-afk/projects/10)
+
 #### Must-Have Features (Implemented)
 
 1. **Contact Details**
