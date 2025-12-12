@@ -32,10 +32,10 @@
 					 <span class="badge bg-warning text-dark">Private</span>
 					 {% else %}
 					 <span class="badge bg-success">Public</span>
-					 {% comment %} {% endif %} {% if club.require_approval %} {% endcomment %}
+					 {% endif %} 
+					 {% if club.require_approval %}
 					 <span class="badge bg-info text-dark"
-						>Approval Required</span
-					 >
+						>Approval Required</span>
 					 {% else %}
 					 <span class="badge bg-primary">Open Join</span>
 					 {% endif %}

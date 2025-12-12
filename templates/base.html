@@ -51,7 +51,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navmenu">
                <ul class="navbar-nav ms-auto">
-                  <!-- Things that require authentication to get use out of -->
                   {% if user.is_authenticated %}
                   <li class="nav-item">
                      <a
@@ -110,9 +109,7 @@
                         >Login</a
                      >
                   </li>
-                  {% endif %}
-                  <!-- Clean up navbar depending on whether user is logged in -->
-                  {% if user.is_authenticated %}
+                  {% endif %} {% if user.is_authenticated %}
                   <li class="nav-item dropdown">
                      <a
                         class="nav-link dropdown-toggle"
@@ -159,7 +156,6 @@
                      <a class="nav-link" href="#contact">Contact</a>
                   </li>
                   {% endif %}
-                  <!-- show user status message -->
                   <li class="nav-item">
                      {% if user.is_authenticated %}
                      <a class="nav-link"><em>{{ user }}</em></a>
@@ -171,22 +167,30 @@
             </div>
          </div>
       </nav>
-      <main>
-         {% block content %}
-         <!-- Content goes here -->
-         {% endblock content %}
-      </main>
       {% if messages %}
-      <div class="container mt-3">
+      <div class="site-messages site-messages--side">
          {% for message in messages %}
          <div
-            class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} alert-dismissible fade show"
+            class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} alert-dismissible fade show d-flex align-items-center"
             role="alert"
          >
-            {{ message }}
+            {% if message.tags == 'success' %}<i
+               class="fas fa-check-circle me-2"
+            ></i
+            >{% endif %} {% if message.tags == 'warning' %}<i
+               class="fas fa-exclamation-triangle me-2"
+            ></i
+            >{% endif %} {% if message.tags == 'error' %}<i
+               class="fas fa-times-circle me-2"
+            ></i
+            >{% endif %} {% if message.tags == 'info' %}<i
+               class="fas fa-info-circle me-2"
+            ></i
+            >{% endif %}
+            <span>{{ message }}</span>
             <button
                type="button"
-               class="btn-close"
+               class="btn-close ms-auto"
                data-bs-dismiss="alert"
                aria-label="Close"
             ></button>
@@ -194,6 +198,12 @@
          {% endfor %}
       </div>
       {% endif %}
+      <main>
+         {% block content %}
+         <!-- Content goes here -->
+         {% endblock content %}
+      </main>
+
       <!-- Footer -->
       <footer class="footer py-5">
          <div class="container">
@@ -289,6 +299,37 @@
                behavior: "smooth",
             });
          }
+      </script>
+      <script>
+         // Auto-dismiss overlay messages after 4 seconds
+         document.addEventListener("DOMContentLoaded", function () {
+            document
+               .querySelectorAll(".site-messages .alert")
+               .forEach(function (el) {
+                  setTimeout(function () {
+                     try {
+                        var alert = bootstrap.Alert.getOrCreateInstance(el);
+                        alert.close();
+                     } catch (e) {
+                        // Fallback: remove element if Bootstrap is unavailable
+                        if (el && el.parentNode) el.parentNode.removeChild(el);
+                     }
+                  }, 2000);
+               });
+         });
+      </script>
+      <script>
+         // Align overlay messages just below the navbar height
+         document.addEventListener("DOMContentLoaded", function () {
+            var nav = document.querySelector("nav.navbar");
+            if (nav) {
+               var h = nav.offsetHeight || 0;
+               document.documentElement.style.setProperty(
+                  "--site-messages-offset",
+                  h + "px"
+               );
+            }
+         });
       </script>
       {% block extra_scripts %} {% endblock extra_scripts %}
    </body>
