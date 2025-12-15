@@ -1,260 +1,205 @@
-{% extends "base.html" %} {% load static %} {% block content %}
-<section class="section py-5">
-   <div class="container">
-	  <!-- Breadcrumb / Back link -->
-	  <div class="mb-3">
-		 <a
-			href="{% url 'clubs' %}"
-			class="text-muted text-decoration-none small"
-		 >
-			<i class="fas fa-arrow-left me-1"></i> Back to Clubs
-		 </a>
-	  </div>
-
-	  <!-- Header Card -->
-	  <div class="card border-0 shadow-sm mb-4">
-		 <div class="card-body p-4">
-			<div
-			   class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-start gap-3"
-			>
-			   <div class="flex-grow-1">
-				  <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-					 <span class="badge bg-dark"
-						>Organizer: {{ club.organizer_name }}</span
-					 >
-					 <span
-						class="badge bg-secondary bg-opacity-25 text-secondary"
-						style="border: 1px solid"
-					 >
-						{{ club.organizer_email }}
-					 </span>
-					 {% if club.is_private %}
-					 <span class="badge bg-warning text-dark">Private</span>
-					 {% else %}
-					 <span class="badge bg-success">Public</span>
-					 {% endif %} 
-					 {% if club.require_approval %}
-					 <span class="badge bg-info text-dark"
-						>Approval Required</span>
-					 {% else %}
-					 <span class="badge bg-primary">Open Join</span>
-					 {% endif %}
-				  </div>
-
-				  <h1 class="display-6 fw-bold mb-2">{{ club.title }}</h1>
-				  <p class="text-muted mb-3">{{ club.excerpt }}</p>
-
-				  <div class="row g-3">
-					 <div class="col-sm-6">
-						<div
-						   class="d-flex align-items-center gap-2 text-secondary"
-						>
-						   <i class="fas fa-users"></i>
-						   <span
-							  >{{ club.approved_members.count }} / {{
-							  club.max_members }} members</span
-						   >
-						</div>
-					 </div>
-					 <div class="col-sm-6">
-						<div
-						   class="d-flex align-items-center gap-2 text-secondary"
-						>
-						   <i class="fas fa-user"></i>
-						   <span>Created by {{ club.author }}</span>
-						</div>
-					 </div>
-				  </div>
-			   </div>
-
-			   <!-- Actions -->
-			   <div class="" style="min-width: 240px">
-				  <div class="d-grid gap-2">
-					 <form
-						action="{% url 'club_join' club.slug %}"
-						method="post"
-					 >
-						{% csrf_token %}
-						<button type="submit" class="btn frost-btn-dark w-100">
-						   <i class="fas fa-plus me-2"></i>Join Club
-						</button>
-					 </form>
-					 <a
-						class="btn btn-outline-secondary"
-						href="mailto:{{ club.organizer_email }}"
-					 >
-						<i class="fas fa-envelope me-2"></i>Contact Organizer
-					 </a>
-					 {% if request.user == club.author %}
-					 <button
-						type="button"
-						class="btn btn-outline-primary"
-						data-bs-toggle="modal"
-						data-bs-target="#editClubModal"
-					 >
-						<i class="fas fa-pen me-2"></i>Edit Details
-					 </button>
-					 <button
-						type="button"
-						class="btn btn-outline-danger"
-						data-bs-toggle="modal"
-						data-bs-target="#deleteClubModal"
-					 >
-						<i class="fas fa-trash me-2"></i>Delete Club
-					 </button>
-					 {% endif %}
-				  </div>
-			   </div>
-			</div>
-		 </div>
-	  </div>
-
-	  <div class="row g-4">
-		 <!-- Main content -->
-		 <div class="col-lg-8">
-			<!-- Personal Intro -->
-			<div class="card border-0 shadow-sm mb-4">
-			   <div class="card-body p-4">
-				  <h2 class="h4 mb-3">
-					 <i class="fas fa-user me-2 text-highlight"></i>About the
-					 Organizer
-				  </h2>
-				  <p class="text-secondary mb-0">{{ club.personal_intro }}</p>
-			   </div>
-			</div>
-
-			<!-- Club Briefing -->
-			<div class="card border-0 shadow-sm mb-4">
-			   <div class="card-body p-4">
-				  <h2 class="h4 mb-3">
-					 <i class="fas fa-info-circle me-2 text-highlight"></i>Club
-					 Briefing
-				  </h2>
-				  <p class="text-secondary mb-0">{{ club.club_briefing }}</p>
-			   </div>
-			</div>
-
-			<!-- Schedule Description -->
-			<div class="card border-0 shadow-sm mb-4">
-			   <div class="card-body p-4">
-				  <h2 class="h4 mb-3">
-					 <i class="fas fa-calendar-alt me-2 text-highlight"></i
-					 >Schedule
-				  </h2>
-				  <p class="text-secondary mb-0">
-					 {{ club.schedule_description }}
-				  </p>
-			   </div>
-			</div>
-		 </div>
-
-		 <!-- Sidebar -->
-		 <div class="col-lg-4">
-			<!-- Expectations -->
-			<div class="card border-0 shadow-sm mb-4">
-			   <div class="card-body p-4">
-				  <h3 class="h5 mb-3">
-					 <i class="fas fa-list-check me-2 text-highlight"></i>Member
-					 Expectations
-				  </h3>
-				  <p class="text-secondary mb-0">{{ club.expectations }}</p>
-			   </div>
-			</div>
-
-			<!-- Prerequisites -->
-			<div class="card border-0 shadow-sm mb-4">
-			   <div class="card-body p-4">
-				  <h3 class="h5 mb-3">
-					 <i class="fas fa-graduation-cap me-2 text-highlight"></i
-					 >Prerequisites
-				  </h3>
-				  <p class="text-secondary mb-0">{{ club.prerequisites }}</p>
-			   </div>
-			</div>
-
-			<!-- Share / Meta -->
-			<div class="card border-0 shadow-sm">
-			   <div class="card-body p-4">
-				  <h3 class="h6 mb-3 text-muted">Meta</h3>
-				  <ul class="list-unstyled small text-secondary mb-3">
-					 <li class="mb-2">
-						<i class="fas fa-clock me-2"></i>Created {{
-						club.created_on|date:"M d, Y" }}
-					 </li>
-					 <li class="mb-2">
-						<i class="fas fa-rotate me-2"></i>Updated {{
-						club.updated_on|timesince }} ago
-					 </li>
-				  </ul>
-				  <button class="btn btn-light w-100">
-					 <i class="fas fa-link me-2"></i>Copy Invite Link
-				  </button>
-			   </div>
-			</div>
-		 </div>
-	  </div>
-   </div>
-</section>
-{% if request.user == club.author %}
-<!-- Edit Club Modal (owner-only) -->
-<div
-   class="modal fade"
-   id="editClubModal"
-   tabindex="-1"
-   aria-labelledby="editClubModalLabel"
-   aria-hidden="true"
->
-   <div class="modal-dialog modal-lg modal-dialog-scrollable">
-	  <div class="modal-content">
-		 <div class="modal-header">
-			<h5 class="modal-title" id="editClubModalLabel">
-			   <i class="fas fa-pen me-2"></i>Edit Club Details
-			</h5>
-			<button
-			   type="button"
-			   class="btn-close"
-			   data-bs-dismiss="modal"
-			   aria-label="Close"
-			></button>
-		 </div>
-		 <div class="modal-body">
-			{% if club_form %} {% load crispy_forms_tags %}
-			<form
-			   action="{% url 'club_update' club.slug %}"
-			   method="post"
-			   id="clubEditForm"
-			>
-			   {% csrf_token %} {% crispy club_form %}
-			</form>
-			{% else %}
-			<div class="alert alert-warning mb-0">
-			   Editing form is not available. Ensure the view passes
-			   <code>club_form</code> (ModelForm) to this template.
-			</div>
-			{% endif %}
-		 </div>
-		 <div class="modal-footer">
-			<button
-			   type="button"
-			   class="btn btn-outline-secondary"
-			   data-bs-dismiss="modal"
-			>
-			   Cancel
-			</button>
-			<button
-			   type="submit"
-			   form="clubEditForm"
-			   class="btn frost-btn-dark"
-			>
-			   <i class="fas fa-save me-2"></i>Save Changes
-			</button>
-		 </div>
-	  </div>
-   </div>
-</div>
-{% endif %}
-
-<script>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <section class="section py-5">
+        <div class="container">
+            <!-- Breadcrumb / Back link -->
+            <div class="mb-3">
+                <a href="{% url 'clubs' %}"
+                   class="text-muted text-decoration-none small">
+                    <i class="fas fa-arrow-left me-1"></i> Back to Clubs
+                </a>
+            </div>
+            <!-- Header Card -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-start gap-3">
+                        <div class="flex-grow-1">
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                <span class="badge bg-dark">Organizer: {{ club.organizer_name }}</span>
+                                <span class="badge bg-secondary bg-opacity-25 text-secondary"
+                                      style="border: 1px solid">{{ club.organizer_email }}</span>
+                                {% if club.is_private %}
+                                    <span class="badge bg-warning text-dark">Private</span>
+                                {% else %}
+                                    <span class="badge bg-success">Public</span>
+                                {% endif %}
+                                {% if club.require_approval %}
+                                    <span class="badge bg-info text-dark">Approval Required</span>
+                                {% else %}
+                                    <span class="badge bg-primary">Open Join</span>
+                                {% endif %}
+                            </div>
+                            <h1 class="display-6 fw-bold mb-2">{{ club.title }}</h1>
+                            <p class="text-muted mb-3">{{ club.excerpt }}</p>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center gap-2 text-secondary">
+                                        <i class="fas fa-users"></i>
+                                        <span>{{ club.approved_members.count }} / {{ club.max_members }} members</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center gap-2 text-secondary">
+                                        <i class="fas fa-user"></i>
+                                        <span>Created by {{ club.author }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Actions -->
+                        <div class="" style="min-width: 240px">
+                            <div class="d-grid gap-2">
+                                <form action="{% url 'club_join' club.slug %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn frost-btn-dark w-100">
+                                        <i class="fas fa-plus me-2"></i>Join Club
+                                    </button>
+                                </form>
+                                <a class="btn btn-outline-secondary"
+                                   href="mailto:{{ club.organizer_email }}">
+                                    <i class="fas fa-envelope me-2"></i>Contact Organizer
+                                </a>
+                                {% if request.user == club.author %}
+                                    <button type="button"
+                                            class="btn btn-outline-primary"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editClubModal">
+                                        <i class="fas fa-pen me-2"></i>Edit Details
+                                    </button>
+                                    <button type="button"
+                                            class="btn btn-outline-danger"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#deleteClubModal">
+                                        <i class="fas fa-trash me-2"></i>Delete Club
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4">
+                <!-- Main content -->
+                <div class="col-lg-8">
+                    <!-- Personal Intro -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <h2 class="h4 mb-3">
+                                <i class="fas fa-user me-2 text-highlight"></i>About the
+                                Organizer
+                            </h2>
+                            <p class="text-secondary mb-0">{{ club.personal_intro }}</p>
+                        </div>
+                    </div>
+                    <!-- Club Briefing -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <h2 class="h4 mb-3">
+                                <i class="fas fa-info-circle me-2 text-highlight"></i>Club
+                                Briefing
+                            </h2>
+                            <p class="text-secondary mb-0">{{ club.club_briefing }}</p>
+                        </div>
+                    </div>
+                    <!-- Schedule Description -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <h2 class="h4 mb-3">
+                                <i class="fas fa-calendar-alt me-2 text-highlight"></i>Schedule
+                            </h2>
+                            <p class="text-secondary mb-0">{{ club.schedule_description }}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Expectations -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-3">
+                                <i class="fas fa-list-check me-2 text-highlight"></i>Member
+                                Expectations
+                            </h3>
+                            <p class="text-secondary mb-0">{{ club.expectations }}</p>
+                        </div>
+                    </div>
+                    <!-- Prerequisites -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-3">
+                                <i class="fas fa-graduation-cap me-2 text-highlight"></i>Prerequisites
+                            </h3>
+                            <p class="text-secondary mb-0">{{ club.prerequisites }}</p>
+                        </div>
+                    </div>
+                    <!-- Share / Meta -->
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="h6 mb-3 text-muted">Meta</h3>
+                            <ul class="list-unstyled small text-secondary mb-3">
+                                <li class="mb-2">
+                                    <i class="fas fa-clock me-2"></i>Created {{ club.created_on|date:"M d, Y" }}
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-rotate me-2"></i>Updated {{ club.updated_on|timesince }} ago
+                                </li>
+                            </ul>
+                            <button class="btn btn-light w-100">
+                                <i class="fas fa-link me-2"></i>Copy Invite Link
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if request.user == club.author %}
+        <!-- Edit Club Modal (owner-only) -->
+        <div class="modal fade"
+             id="editClubModal"
+             tabindex="-1"
+             aria-labelledby="editClubModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editClubModalLabel">
+                            <i class="fas fa-pen me-2"></i>Edit Club Details
+                        </h5>
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {% if club_form %}
+                            {% load crispy_forms_tags %}
+                            <form action="{% url 'club_update' club.slug %}"
+                                  method="post"
+                                  id="clubEditForm">
+                                {% csrf_token %} {% crispy club_form %}
+                            </form>
+                        {% else %}
+                            <div class="alert alert-warning mb-0">
+                                Editing form is not available. Ensure the view passes
+                                <code>club_form</code> (ModelForm) to this template.
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"
+                                class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" form="clubEditForm" class="btn frost-btn-dark">
+                            <i class="fas fa-save me-2"></i>Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <script>
    document.addEventListener("shown.bs.modal", function (event) {
 	  if (event.target && event.target.id === "editClubModal") {
 		 const sections = document.querySelectorAll(".card");
@@ -267,78 +212,63 @@
 		 sections.forEach((card) => card.classList.remove("shadow"));
 	  }
    });
-</script>
-{% if request.user == club.author %}
-<!-- Delete Club Modal (owner-only) -->
-<div
-   class="modal fade"
-   id="deleteClubModal"
-   tabindex="-1"
-   aria-labelledby="deleteClubModalLabel"
-   aria-hidden="true"
->
-   <div class="modal-dialog modal-dialog-centered">
-	  <div class="modal-content">
-		 <div class="modal-header">
-			<h5 class="modal-title" id="deleteClubModalLabel">
-			   <i class="fas fa-triangle-exclamation me-2 text-danger"></i
-			   >Confirm Deletion
-			</h5>
-			<button
-			   type="button"
-			   class="btn-close"
-			   data-bs-dismiss="modal"
-			   aria-label="Close"
-			></button>
-		 </div>
-		 <div class="modal-body">
-			<div class="alert alert-danger" role="alert">
-			   This action permanently deletes the club "{{ club.title }}" and
-			   all its data. This cannot be undone.
-			</div>
-			<p class="mb-2">
-			   To confirm, type <strong>I understand</strong> below:
-			</p>
-			<form
-			   action="{% url 'club_delete' club.slug %}"
-			   method="post"
-			   id="clubDeleteForm"
-			>
-			   {% csrf_token %}
-			   <div class="mb-3">
-				  <input
-					 type="text"
-					 class="form-control"
-					 name="confirm_text"
-					 id="confirmTextInput"
-					 placeholder="I understand"
-					 required
-				  />
-			   </div>
-			</form>
-		 </div>
-		 <div class="modal-footer">
-			<button
-			   type="button"
-			   class="btn btn-outline-secondary"
-			   data-bs-dismiss="modal"
-			>
-			   Cancel
-			</button>
-			<button
-			   type="submit"
-			   form="clubDeleteForm"
-			   class="btn btn-danger"
-			   id="confirmDeleteBtn"
-			   disabled
-			>
-			   <i class="fas fa-trash me-2"></i>Delete Club
-			</button>
-		 </div>
-	  </div>
-   </div>
-</div>
-<script>
+    </script>
+    {% if request.user == club.author %}
+        <!-- Delete Club Modal (owner-only) -->
+        <div class="modal fade"
+             id="deleteClubModal"
+             tabindex="-1"
+             aria-labelledby="deleteClubModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteClubModalLabel">
+                            <i class="fas fa-triangle-exclamation me-2 text-danger"></i>Confirm Deletion
+                        </h5>
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger" role="alert">
+                            This action permanently deletes the club "{{ club.title }}" and
+                            all its data. This cannot be undone.
+                        </div>
+                        <p class="mb-2">
+                            To confirm, type <strong>I understand</strong> below:
+                        </p>
+                        <form action="{% url 'club_delete' club.slug %}"
+                              method="post"
+                              id="clubDeleteForm">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <input type="text"
+                                       class="form-control"
+                                       name="confirm_text"
+                                       id="confirmTextInput"
+                                       placeholder="I understand"
+                                       required />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"
+                                class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit"
+                                form="clubDeleteForm"
+                                class="btn btn-danger"
+                                id="confirmDeleteBtn"
+                                disabled>
+                            <i class="fas fa-trash me-2"></i>Delete Club
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
    (function () {
 	  const input = document.getElementById("confirmTextInput");
 	  const btn = document.getElementById("confirmDeleteBtn");
@@ -348,5 +278,6 @@
 		 });
 	  }
    })();
-</script>
-{% endif %} {% endblock content %}
+        </script>
+    {% endif %}
+{% endblock content %}
