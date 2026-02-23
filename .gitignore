@@ -1,3 +1,4 @@
 env_nu/
 staticfiles/
 env.py
+__pycache__/
