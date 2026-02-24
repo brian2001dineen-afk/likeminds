@@ -226,10 +226,10 @@ The dynamic portion of Likeminds uses Django to power club listings, detail page
    -  `club_create`: Handles new club creation; automatically adds the creator as an approved member.
    -  `club_join`: Adds users to `approved_members` or `unapproved_members` depending on `require_approval`.
    -  `club_update`: Owner-only inline edits via the modal; returns messages on success/error.
-   -  `my_clubs`: Aggregates “Created”, “Joined”, and “Pending” clubs for the signed-in user.
-   -  `club_delete`: Owner-only deletion with a typed confirmation gate (“I understand”), then redirect to `my_clubs`.
+   -  `my_clubs`: Aggregates "Created", "Joined", and "Pending" clubs for the signed-in user.
+   -  `club_delete`: Owner-only deletion with a typed confirmation gate ("I understand"), then redirect to `my_clubs`.
 -  **URLs**: Routes include `clubs/`, `create/`, `my-clubs/`, `join/<slug>/`, `update/<slug>/`, `delete/<slug>/`, and `/<slug>/` for details.
--  **Templates**: Django template inheritance via `base.html`; Bootstrap-styled components throughout (`club_detail.html`, `my_clubs.html`). Navbar shows “My Clubs” only for authenticated users.
+-  **Templates**: Django template inheritance via `base.html`; Bootstrap-styled components throughout (`club_detail.html`, `my_clubs.html`). Navbar shows "My Clubs" only for authenticated users.
 -  **Messages**: Django messages surface feedback for join/update/delete; site renders them as styled overlay alerts.
 
 ## CRUD Features
@@ -250,26 +250,116 @@ Likeminds implements full CRUD around clubs, with permissions and safe-guards:
 -  **Update**:
 
    -  Path: `club_update` (`/clubs/update/<slug>/`)
-   -  Access: Owner-only; triggered from “Edit Details” button in club detail.
+   -  Access: Owner-only; triggered from "Edit Details" button in club detail.
    -  UX: Modal with Crispy-rendered `ClubForm`; success/error messages provided.
 
 -  **Delete**:
 
    -  Path: `club_delete` (`/clubs/delete/<slug>/`)
-   -  Access: Owner-only; requires entering the phrase “I understand” in a confirmation modal.
+   -  Access: Owner-only; requires entering the phrase "I understand" in a confirmation modal.
    -  Behavior: Deletes the club and redirects user to `my_clubs` with a success message.
 
 -  **Join/Approval Flow**:
    -  Path: `club_join` (`/clubs/join/<slug>/`)
-   -  Logic: If `require_approval` is true, the user is added to `unapproved_members` and sees a “Request sent” message. Otherwise, they are added to `approved_members` and see a success message.
+   -  Logic: If `require_approval` is true, the user is added to `unapproved_members` and sees a "Request sent" message. Otherwise, they are added to `approved_members` and see a success message.
    -  Duplicates: If already approved or pending, informative messages are shown without changing membership.
 
-These features are wired with Django’s authentication checks, Bootstrap-styled templates, and clean URL routing to provide a cohesive, user-friendly experience.
+These features are wired with Django's authentication checks, Bootstrap-styled templates, and clean URL routing to provide a cohesive, user-friendly experience.
 
 ## Deployment
 
--  **Platform**: Heroku
--  **CDN**: Bootstrap and FontAwesome served via CDN for optimal performance
+The project is deployed on **Heroku** using a PostgreSQL database and Cloudinary for media storage. Bootstrap and FontAwesome are served via CDN.
+
+The first deployment method is for Heroku. To deploy an app locally, see the "Getting Started (Django)" section below.
+
+### Prerequisites
+
+-  A [Heroku](https://heroku.com) account
+-  The [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed (optional but useful)
+-  A [Cloudinary](https://cloudinary.com) account for media/static file hosting
+-  An external PostgreSQL database (e.g. via Heroku Postgres add-on or another provider)
+
+1. Prepare the codebase
+
+Ensure the following files are present and correct:
+
+**`Procfile`** (tells Heroku how to run the app):
+```
+web: gunicorn likeminds.wsgi
+```
+
+**`requirements.txt`** (must include `gunicorn`, `psycopg2`, `dj-database-url`, `whitenoise`):
+```bash
+pip freeze > requirements.txt
+```
+
+**`settings.py`** key configuration:
+-  `SECRET_KEY` is read from the environment: `os.environ.get("SECRET_KEY")`
+-  `DATABASE_URL` is parsed with `dj_database_url`: `dj_database_url.parse(os.environ.get("DATABASE_URL"))`
+-  `ALLOWED_HOSTS` includes `".herokuapp.com"`
+-  `WhiteNoiseMiddleware` is in `MIDDLEWARE` for serving static files
+-  `STATIC_ROOT` is set to `os.path.join(BASE_DIR, 'staticfiles')`
+-  `DEBUG = False` in production
+
+2. Create the Heroku app
+
+Via the Heroku dashboard or CLI:
+
+```bash
+heroku login
+heroku create your-app-name
+```
+
+3. Set config vars
+
+In the Heroku dashboard, go to **Settings → Config Vars → Reveal Config Vars** and add the following:
+
+| Key | Value |
+|-----|-------|
+| `SECRET_KEY` | Your Django secret key |
+| `DATABASE_URL` | Your PostgreSQL connection string |
+| `CLOUDINARY_URL` | Your Cloudinary API URL (from your Cloudinary dashboard) |
+
+Or via the CLI:
+
+```bash
+heroku config:set SECRET_KEY=your_secret_key
+heroku config:set DATABASE_URL=your_database_url
+heroku config:set CLOUDINARY_URL=your_cloudinary_url
+```
+
+4. Connect GitHub and deploy
+
+1. In the Heroku dashboard, go to the **Deploy** tab
+2. Under **Deployment method**, select **GitHub**
+3. Search for and connect your repository
+4. Either enable **Automatic Deploys** (deploys on every push to main), or use **Manual Deploy** to deploy a specific branch
+
+5. Run database migrations
+
+After the first deploy, run migrations against the production database:
+
+```bash
+heroku run python manage.py migrate
+```
+
+To create a superuser for the admin panel:
+
+```bash
+heroku run python manage.py createsuperuser
+```
+
+6. Collect static files
+
+Static files are served by WhiteNoise. Heroku runs `collectstatic` automatically during the build process. If you need to trigger it manually:
+
+```bash
+heroku run python manage.py collectstatic --noinput
+```
+
+7. Verify
+
+Visit your app at `https://your-app-name.herokuapp.com`. The `/clubs/` and `/admin/` routes should be functional once migrations and a superuser have been created.
 
 ---
 
@@ -288,7 +378,7 @@ Run the dynamic Django app locally:
 # From the project root
 python -m venv .venv; .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-# This installs the exact versions pinned in the project’s requirements.txt
+# This installs the exact versions pinned in the project's requirements.txt
 # including Django, django-crispy-forms, and crispy-bootstrap5
 ```
 
@@ -314,9 +404,9 @@ python manage.py createsuperuser
 
 6. Navigate
 
-   -  `/clubs/` — browse public clubs
-   -  `/clubs/create/` — create a club
-   -  `/clubs/my-clubs/` — view created, joined, and pending clubs
+   -  `/clubs/` - browse public clubs
+   -  `/clubs/create/` - create a club
+   -  `/clubs/my-clubs/` - view created, joined, and pending clubs
 
 7. Static files (if needed)
    -  Ensure `STATIC_URL` is configured; during local dev Django serves files automatically.
@@ -325,3 +415,25 @@ python manage.py createsuperuser
 ```powershell
 python manage.py collectstatic --noinput
 ```
+
+## Use of AI
+
+AI tools were used throughout the development of Likeminds in a targeted, outcome-focused way rather than as a replacement for understanding.
+
+### Code creation & templating
+AI was used to accelerate the generation of boilerplate and structural code - for example, scaffolding Django views, URL patterns, and model definitions. This allowed more time to be spent on design decisions and feature logic rather than repetitive setup. All generated code was reviewed and adjusted to fit the project's specific requirements.
+
+### Debugging
+When bugs arose (such as issues with modal rendering or membership logic), AI was used as a fast first-pass diagnostic tool. It helped identify likely causes quickly, though the actual fixes always required manual verification and contextual judgement to ensure correctness within the wider codebase.
+
+### Code optimization & UX improvements
+AI suggestions were consulted when refining template structure and improving query efficiency (e.g. using `annotate` for member counts rather than hitting the database per-club). These optimizations contributed directly to a cleaner, more performant experience.
+
+### Automated testing
+AI (primarily GitHub Copilot) was used to generate the initial structure of Django unit tests, covering views, forms, and model logic. The generated tests provided a solid foundation, though they required review and adjustment - particularly around edge cases like the join/approval flow and owner-only access guards.
+
+### User story templating
+The user story format used throughout the project (As a..., I want..., Acceptance Criteria:) was templated with AI assistance, ensuring consistency across all stories and saving time on repetitive formatting work.
+
+### Workflow reflection
+Overall, AI accelerated the development cycle most noticeably in the early structural phases and during testing. It worked best as a collaborator for well-defined tasks rather than open-ended design problems, where human judgement remained essential. The key outcome was a reduced time burden on mechanical tasks, freeing focus for the decisions that actually shaped the project.
